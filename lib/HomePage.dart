@@ -10,7 +10,6 @@ final Color offWhite = Color(0xFFeae2b7);
 final Color red = Color(0xFFe63946);
 final Color lightBlue = Color(0xFFa8dadc);
 final Color mediumBlue = Color(0xFF457b9d);
-final Color darkBlue = Color(0xFF1d3557);
 
 class HomePage extends StatefulWidget {
   @override
