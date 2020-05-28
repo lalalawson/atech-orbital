@@ -24,11 +24,18 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: offWhite,
-      body: Stack(
-        children: <Widget>[
-          menu(context),
-          homePage(context),
-        ],
+      body: GestureDetector(
+        onHorizontalDragUpdate: (details) {
+          if (details.delta.dx < 0) {
+            goToPomodoro(context);
+          }
+        },
+        child: Stack(
+          children: <Widget>[
+            menu(context),
+            homePage(context),
+          ],
+        ),
       ),
     );
   }
