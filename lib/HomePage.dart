@@ -5,11 +5,7 @@ import 'package:purrductive/ToDoList.dart';
 import 'package:purrductive/Settings.dart';
 import 'package:purrductive/YongLer.dart';
 import 'package:purrductive/Lawson.dart';
-
-final Color offWhite = Color(0xFFeae2b7);
-final Color red = Color(0xFFe63946);
-final Color lightBlue = Color(0xFFa8dadc);
-final Color mediumBlue = Color(0xFF457b9d);
+import 'package:purrductive/const/colors.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -26,18 +22,6 @@ class _HomePageState extends State<HomePage> {
     screenHeight = size.height;
     screenWidth = size.width;
 
-    final controller = PageController(
-      initialPage: 1,
-    );
-
-    final pageView = PageView(
-      controller: controller,
-      children: <Widget>[
-        HomePage(),
-        PetHomePage(),
-      ],
-    );
-
     return Scaffold(
       backgroundColor: offWhite,
       body: Stack(
@@ -52,177 +36,177 @@ class _HomePageState extends State<HomePage> {
   Widget homePage(context) {
     return AnimatedPositioned(
       top: isCollapsed ? 0 : 0 * screenHeight,
-      bottom: isCollapsed ? 0 : 0 * screenHeight,
+      bottom: isCollapsed ? 0 : -0 * screenHeight,
       right: isCollapsed ? 0 : -0.6 * screenWidth,
-      left: isCollapsed ? 0 : 0.4 * screenWidth,
+      left: isCollapsed ? 0 : 0.6 * screenWidth,
       duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
+      curve: Curves.easeIn,
       child: Material(
         elevation: 15,
         color: offWhite,
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 60, 0, 10),
-                  child: InkWell(
-                    child: Icon(
-                      Icons.menu,
-                      size: 30,
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      child: Icon(
+                        Icons.menu,
+                        size: 30,
+                      ),
+                      onTap: () {
+                        setState(() {
+                          isCollapsed = !isCollapsed;
+                        });
+                      },
                     ),
-                    onTap: () {
+                  )
+                ],
+              ),
+              Expanded(
+                //flex: 1,
+                child: GestureDetector(
+                  onTap: () {
+                    if (isCollapsed) {
+                      goToToDoList(context);
+                    } else {
                       setState(() {
                         isCollapsed = !isCollapsed;
                       });
-                    },
-                  ),
-                )
-              ],
-            ),
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  if (isCollapsed) {
-                    goToToDoList(context);
-                  }
-                },
-                child: Image.asset('images/board.png'),
+                    }
+                  },
+                  child: Image.asset('images/board.png'),
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  if (isCollapsed) {
-                    goToPetHomePage(context);
-                  }
-                },
-                child: Image.asset('images/lion.gif'),
+              Expanded(
+                //flex: 1,
+                child: GestureDetector(
+                  onTap: () {
+                    if (isCollapsed) {
+                      goToPetHomePage(context);
+                    } else {
+                      setState(() {
+                        isCollapsed = !isCollapsed;
+                      });
+                    }
+                  },
+                  child: Image.asset('images/lion.gif'),
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      if (isCollapsed) {
-                        goToPomodoro(context);
-                      }
-                    },
-                    child: Icon(
-                      Icons.alarm,
-                      size: 80,
-                      color: Colors.redAccent,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      if (isCollapsed) {
-                        goToToDoList(context);
-                      }
-                    },
-                    child: Icon(
-                      Icons.calendar_today,
-                      size: 80,
-                      color: Colors.yellow[800],
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget menu(context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16.0),
+    return SafeArea(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 80),
-          Text(
-            "PURRDUCTIVE",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: 'PressStart2P',
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "PURRDUCTIVE",
+              style: TextStyle(
+                fontSize: 35,
+                fontFamily: 'pixelsix',
+              ),
             ),
           ),
-          SizedBox(height: 240),
-          Align(
-            alignment: Alignment.centerLeft,
+          SizedBox(height: 100),
+          Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.min,
+              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                GestureDetector(
+                ListTile(
+                  //contentPadding: EdgeInsets.all(8.0),
+                  leading: Icon(
+                    Icons.settings,
+                    color: Colors.black,
+                  ),
                   onTap: () {
                     goToSettings(context);
                   },
-                  child: Text(
+                  title: Text(
                     "Settings",
                     style: TextStyle(
                       fontSize: 22,
-                      fontFamily: 'PressStart2P',
+                      fontFamily: 'pixelmix',
                     ),
                   ),
                 ),
-                SizedBox(height: 35),
-                Text(
-                  "Sign Out",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontFamily: 'PressStart2P',
+                ListTile(
+                  //contentPadding: EdgeInsets.all(8.0),
+                  leading: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.black,
+                  ),
+                  onTap: () {
+                    //TODO: Logout function
+                  },
+                  title: Text(
+                    "Logout",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: 'pixelmix',
+                    ),
                   ),
                 ),
-                SizedBox(height: 35),
-                GestureDetector(
+                ListTile(
+                  //contentPadding: EdgeInsets.all(8.0),
+                  leading: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
                   onTap: () {
                     setState(() {
                       isCollapsed = !isCollapsed;
                     });
                   },
-                  child: Text(
+                  title: Text(
                     "Back",
                     style: TextStyle(
                       fontSize: 22,
-                      fontFamily: 'PressStart2P',
+                      fontFamily: 'pixelmix',
                     ),
                   ),
                 ),
-                SizedBox(height: 340),
-                Row(
-                  children: <Widget>[
-                    Text(
-                      "Made by Team A.Tech \n\nYong Ler and Lawson",
-                      style: TextStyle(
-                          fontSize: 8,
-                          fontFamily: 'PressStart2P',
-                          letterSpacing: 1.5),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        goToYongLer(context);
-                      },
-                      child: Image.asset('images/human1.png'),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        goToLawson(context);
-                      },
-                      child: Image.asset('images/human2.png'),
-                    ),
-                  ],
-                )
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "Made by Team A.Tech \n\nYong Ler and Lawson",
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'PixelOperator',
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    goToYongLer(context);
+                  },
+                  child: Image.asset('images/human1.png'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    goToLawson(context);
+                  },
+                  child: Image.asset('images/human2.png'),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
