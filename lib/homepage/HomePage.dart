@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:purrductive/PetHomePage.dart';
-import 'package:purrductive/PomodoroTimer.dart';
-import 'package:purrductive/ToDoList.dart';
-import 'package:purrductive/Settings.dart';
-import 'package:purrductive/YongLer.dart';
-import 'package:purrductive/Lawson.dart';
+import 'package:purrductive/pethomepage/PetHomePage.dart';
+import 'package:purrductive/timerpage/PomodoroTimer.dart';
+import 'package:purrductive/todolistpage/ToDoList.dart';
+import 'package:purrductive/settingspage/Settings.dart';
+import 'package:purrductive/credits/YongLer.dart';
+import 'package:purrductive/credits/Lawson.dart';
 import 'package:purrductive/const/colors.dart';
 
 class HomePage extends StatefulWidget {

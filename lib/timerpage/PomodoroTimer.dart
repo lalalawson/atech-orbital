@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-import 'package:purrductive/HomePage.dart';
-import 'package:purrductive/ToDoList.dart';
+import 'package:purrductive/homepage/HomePage.dart';
+import 'package:purrductive/todolistpage/ToDoList.dart';
+import 'package:purrductive/const/colors.dart';
 
 class Pomodoro extends StatefulWidget {
   @override
@@ -11,12 +12,6 @@ class Pomodoro extends StatefulWidget {
 class _PomodoroState extends State<Pomodoro> {
   @override
   Widget build(BuildContext context) {
-    const offWhite = const Color(0xFFeae2b7);
-    const red = const Color(0xFFe63946);
-    const lightBlue = const Color(0xFFa8dadc);
-    const mediumBlue = const Color(0xFF457b9d);
-    const darkBlue = const Color(0xFF1d3557);
-
     return Scaffold(
       backgroundColor: offWhite,
       body: SafeArea(
@@ -34,7 +29,7 @@ class _PomodoroState extends State<Pomodoro> {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 400),
+            SizedBox(height: 200),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
