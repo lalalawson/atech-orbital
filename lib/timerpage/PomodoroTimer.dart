@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-import 'package:purrductive/homepage/HomePage.dart';
-import 'package:purrductive/todolistpage/ToDoList.dart';
+import 'package:purrductive/const/routeNames.dart';
 import 'package:purrductive/const/colors.dart';
 
 class Pomodoro extends StatefulWidget {
@@ -35,7 +33,7 @@ class _PomodoroState extends State<Pomodoro> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    goToHome(context);
+                    Navigator.pushReplacementNamed(context, homeScreen);
                   },
                   child: Icon(
                     Icons.home,
@@ -45,7 +43,7 @@ class _PomodoroState extends State<Pomodoro> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    goToToDoList(context);
+                    Navigator.pushReplacementNamed(context, toDoListPage);
                   },
                   child: Icon(
                     Icons.calendar_today,
@@ -61,13 +59,13 @@ class _PomodoroState extends State<Pomodoro> {
     );
   }
 
-  Future goToHome(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
-
-  Future goToToDoList(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ToDoList()));
-  }
+//  Future goToHome(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => HomePage()));
+//  }
+//
+//  Future goToToDoList(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => ToDoList()));
+//  }
 }

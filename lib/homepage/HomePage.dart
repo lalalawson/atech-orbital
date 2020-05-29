@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:purrductive/pethomepage/PetHomePage.dart';
-import 'package:purrductive/timerpage/PomodoroTimer.dart';
-import 'package:purrductive/todolistpage/ToDoList.dart';
-import 'package:purrductive/settingspage/Settings.dart';
-import 'package:purrductive/credits/YongLer.dart';
-import 'package:purrductive/credits/Lawson.dart';
+import 'package:purrductive/const/routeNames.dart';
+//import 'package:purrductive/pethomepage/PetHomePage.dart';
+//import 'package:purrductive/timerpage/PomodoroTimer.dart';
+//import 'package:purrductive/todolistpage/ToDoList.dart';
+//import 'package:purrductive/settingspage/Settings.dart';
+//import 'package:purrductive/credits/YongLer.dart';
+//import 'package:purrductive/credits/Lawson.dart';
 import 'package:purrductive/const/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,7 +28,13 @@ class _HomePageState extends State<HomePage> {
       body: GestureDetector(
         onHorizontalDragUpdate: (details) {
           if (details.delta.dx < 0) {
-            goToPomodoro(context);
+            if (isCollapsed) {
+              Navigator.pushNamed(context, timerPage);
+            }
+          } else {
+            setState(() {
+              isCollapsed = !isCollapsed;
+            });
           }
         },
         child: Stack(
@@ -73,11 +80,10 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               Expanded(
-                //flex: 1,
                 child: GestureDetector(
                   onTap: () {
                     if (isCollapsed) {
-                      goToToDoList(context);
+                      Navigator.pushNamed(context, toDoListPage);
                     } else {
                       setState(() {
                         isCollapsed = !isCollapsed;
@@ -88,11 +94,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Expanded(
-                //flex: 1,
                 child: GestureDetector(
                   onTap: () {
                     if (isCollapsed) {
-                      goToPetHomePage(context);
+                      Navigator.pushNamed(context, petHomePage);
                     } else {
                       setState(() {
                         isCollapsed = !isCollapsed;
@@ -138,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.black,
                   ),
                   onTap: () {
-                    goToSettings(context);
+                    Navigator.pushNamed(context, settingsPage);
                   },
                   title: Text(
                     "Settings",
@@ -201,13 +206,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    goToYongLer(context);
+                    Navigator.pushNamed(context, yongler);
                   },
                   child: Image.asset('images/human1.png'),
                 ),
                 GestureDetector(
                   onTap: () {
-                    goToLawson(context);
+                    Navigator.pushNamed(context, lawson);
                   },
                   child: Image.asset('images/human2.png'),
                 ),
@@ -219,31 +224,31 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future goToPetHomePage(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => PetHomePage()));
-  }
-
-  Future goToPomodoro(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Pomodoro()));
-  }
-
-  Future goToToDoList(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ToDoList()));
-  }
-
-  Future goToSettings(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Settings()));
-  }
-
-  Future goToYongLer(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => YongLer()));
-  }
-
-  Future goToLawson(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Lawson()));
-  }
+//  Future goToPetHomePage(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => PetHomePage()));
+//  }
+//
+//  Future goToPomodoro(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => Pomodoro()));
+//  }
+//
+//  Future goToToDoList(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => ToDoList()));
+//  }
+//
+//  Future goToSettings(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => Settings()));
+//  }
+//
+//  Future goToYongLer(context) async {
+//    Navigator.push(context, MaterialPageRoute(builder: (context) => YongLer()));
+//  }
+//
+//  Future goToLawson(context) async {
+//    Navigator.push(context, MaterialPageRoute(builder: (context) => Lawson()));
+//  }
 }

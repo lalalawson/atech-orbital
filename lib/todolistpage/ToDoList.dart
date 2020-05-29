@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:purrductive/timerpage/PomodoroTimer.dart';
-import 'package:purrductive/homepage/HomePage.dart';
+import 'package:purrductive/const/routeNames.dart';
 import 'package:purrductive/const/colors.dart';
 
 class ToDoList extends StatefulWidget {
@@ -31,7 +30,7 @@ class _ToDoListState extends State<ToDoList> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    goToHome(context);
+                    Navigator.pushReplacementNamed(context, homeScreen);
                   },
                   child: Icon(
                     Icons.home,
@@ -41,7 +40,7 @@ class _ToDoListState extends State<ToDoList> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    goToTimer(context);
+                    Navigator.pushReplacementNamed(context, timerPage);
                   },
                   child: Icon(
                     Icons.alarm,
@@ -55,15 +54,5 @@ class _ToDoListState extends State<ToDoList> {
         ),
       ),
     );
-  }
-
-  Future goToHome(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
-
-  Future goToTimer(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Pomodoro()));
   }
 }
