@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-import 'package:purrductive/homepage/HomePage.dart';
-import 'package:purrductive/todolistpage/ToDoList.dart';
+import 'package:purrductive/const/routeNames.dart';
 import 'package:purrductive/const/colors.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 class Pomodoro extends StatefulWidget {
   @override
@@ -19,23 +18,25 @@ class _PomodoroState extends State<Pomodoro> {
           children: <Widget>[
             SizedBox(height: 300),
             Container(
-              color: mediumBlue,
-              child: Text(
-                "THIS IS WHERE THE TIMER WILL BE",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'PressStart2P',
+              color: offWhite,
+              child: Countdown(
+                seconds: 10,
+                build: (_, double time) => Text(
+                  time.toString(),
+                  style: TextStyle(fontSize: 50.0, fontFamily: 'PixelOperator'),
                 ),
-                textAlign: TextAlign.center,
+                //interval: Duration(milliseconds: 100),
+                onFinished: () {
+                  print('Timer is done!');
+                },
               ),
             ),
-            SizedBox(height: 200),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    goToHome(context);
+                    Navigator.pushReplacementNamed(context, homeScreen);
                   },
                   child: Icon(
                     Icons.home,
@@ -45,7 +46,7 @@ class _PomodoroState extends State<Pomodoro> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    goToToDoList(context);
+                    Navigator.pushReplacementNamed(context, toDoListPage);
                   },
                   child: Icon(
                     Icons.calendar_today,
@@ -61,13 +62,13 @@ class _PomodoroState extends State<Pomodoro> {
     );
   }
 
-  Future goToHome(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
-
-  Future goToToDoList(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ToDoList()));
-  }
+//  Future goToHome(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => HomePage()));
+//  }
+//
+//  Future goToToDoList(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => ToDoList()));
+//  }
 }
