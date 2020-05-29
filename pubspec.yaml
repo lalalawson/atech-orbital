@@ -65,6 +65,19 @@ flutter:
       fonts:
         - asset: fonts/PressStart2P-Regular.ttf
 
+    - family: pixelmix
+      fonts:
+        - asset: fonts/pixelmix.ttf
+
+    - family: PixelOperator
+      fonts:
+        - asset: fonts/PixelOperator.ttf
+
+    - family: pixelsix
+      fonts:
+        - asset: fonts/pixelsix.ttf
+
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
