@@ -51,10 +51,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget homePage(context) {
     return AnimatedPositioned(
-      top: isCollapsed ? 0 : 0 * screenHeight,
-      bottom: isCollapsed ? 0 : 0 * screenHeight,
-      right: isCollapsed ? 0 : -0.6 * screenWidth,
-      left: isCollapsed ? 0 : 0.4 * screenWidth,
+      top: isCollapsed ? 0 : 0.2 * screenHeight,
+      bottom: isCollapsed ? 0 : 0.2 * screenHeight,
+      right: isCollapsed ? 0 : -0.4 * screenWidth,
+      left: isCollapsed ? 0 : 0.6 * screenWidth,
       duration: Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       child: Material(
