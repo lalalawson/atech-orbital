@@ -12,13 +12,13 @@ class _PomodoroState extends State<Pomodoro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: offWhite,
+      backgroundColor: silverwhite,
       body: SafeArea(
         child: Column(
           children: <Widget>[
             SizedBox(height: 300),
             Container(
-              color: offWhite,
+              color: silverwhite,
               child: Countdown(
                 seconds: 10,
                 build: (_, double time) => Text(

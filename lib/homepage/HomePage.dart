@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:purrductive/const/routeNames.dart';
-//import 'package:purrductive/pethomepage/PetHomePage.dart';
-//import 'package:purrductive/timerpage/PomodoroTimer.dart';
-//import 'package:purrductive/todolistpage/ToDoList.dart';
-//import 'package:purrductive/settingspage/Settings.dart';
-//import 'package:purrductive/credits/YongLer.dart';
-//import 'package:purrductive/credits/Lawson.dart';
 import 'package:purrductive/const/colors.dart';
+import 'package:purrductive/todolistpage/widgets/tasks_list.dart';
+import 'package:provider/provider.dart';
+import 'package:purrductive/todolistpage/task/TaskData.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     screenWidth = size.width;
 
     return Scaffold(
-      backgroundColor: offWhite,
+      backgroundColor: silverwhite,
       body: GestureDetector(
         onHorizontalDragUpdate: (details) {
           if (details.delta.dx < 0) {
@@ -57,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       curve: Curves.easeIn,
       child: Material(
         elevation: 15,
-        color: offWhite,
+        color: silverwhite,
         child: SafeArea(
           child: Column(
             children: <Widget>[
@@ -90,7 +87,36 @@ class _HomePageState extends State<HomePage> {
                       });
                     }
                   },
-                  child: Image.asset('images/board.png'),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Image.asset('images/board.png'),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            'Welcome back username',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 35,
+                              fontFamily: 'pixelmix',
+                              letterSpacing: 3.5,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            '${Provider.of<TaskData>(context).taskLeft} Tasks left to do',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 40,
+                              fontFamily: 'PixelOperator',
+                              letterSpacing: 2.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Expanded(

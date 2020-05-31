@@ -6,7 +6,7 @@ class MyAppBar extends AppBar {
     Key key,
   }) : super(
             key: key,
-            backgroundColor: offWhite,
+            backgroundColor: silverwhite,
             elevation: 0,
             iconTheme: IconThemeData(color: Colors.black));
 }

@@ -6,7 +6,9 @@ import 'package:purrductive/homepage/HomePage.dart';
 import 'package:purrductive/pethomepage/PetHomePage.dart';
 import 'package:purrductive/settingspage/Settings.dart';
 import 'package:purrductive/timerpage/PomodoroTimer.dart';
-import 'package:purrductive/todolistpage/ToDoList.dart';
+import 'package:purrductive/todolistpage/screens/tasks_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:purrductive/todolistpage/task/TaskData.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,18 +22,21 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'purrductive',
-      home: HomePage(),
-      routes: <String, WidgetBuilder>{
-        homeScreen: (BuildContext context) => HomePage(),
-        lawson: (BuildContext context) => Lawson(),
-        yongler: (BuildContext context) => YongLer(),
-        petHomePage: (BuildContext context) => PetHomePage(),
-        settingsPage: (BuildContext context) => Settings(),
-        timerPage: (BuildContext context) => Pomodoro(),
-        toDoListPage: (BuildContext context) => ToDoList(),
-      },
+    return ChangeNotifierProvider(
+      builder: (context) => TaskData(),
+      child: MaterialApp(
+        title: 'purrductive',
+        home: HomePage(),
+        routes: <String, WidgetBuilder>{
+          homeScreen: (BuildContext context) => HomePage(),
+          lawson: (BuildContext context) => Lawson(),
+          yongler: (BuildContext context) => YongLer(),
+          petHomePage: (BuildContext context) => PetHomePage(),
+          settingsPage: (BuildContext context) => Settings(),
+          timerPage: (BuildContext context) => Pomodoro(),
+          toDoListPage: (BuildContext context) => TasksScreen(),
+        },
+      ),
     );
   }
 }

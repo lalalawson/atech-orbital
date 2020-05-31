@@ -10,7 +10,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: offWhite,
+      backgroundColor: silverwhite,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -38,7 +38,7 @@ class _SettingsState extends State<Settings> {
             ),
             SizedBox(height: 300),
             Container(
-              color: mediumBlue,
+              color: Colors.cyan,
               child: Text(
                 "THIS IS WHERE THE SETTINGS WILL BE",
                 style: TextStyle(fontSize: 20, fontFamily: 'PressStart2P'),

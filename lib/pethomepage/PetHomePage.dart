@@ -10,13 +10,13 @@ class _PetHomePageState extends State<PetHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: offWhite,
+      backgroundColor: silverwhite,
       body: SafeArea(
         child: Column(
           children: <Widget>[
             SizedBox(height: 300),
             Container(
-              color: mediumBlue,
+              color: Colors.cyan,
               child: Text(
                 "THIS IS WHERE THE PET'S HOME PAGE WILL BE",
                 style: TextStyle(fontFamily: 'PressStart2P', fontSize: 20),
