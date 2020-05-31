@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:purrductive/const/colors.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -8,14 +9,8 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    const offWhite = const Color(0xFFeae2b7);
-    const red = const Color(0xFFe63946);
-    const lightBlue = const Color(0xFFa8dadc);
-    const mediumBlue = const Color(0xFF457b9d);
-    const darkBlue = const Color(0xFF1d3557);
-
     return Scaffold(
-      backgroundColor: offWhite,
+      backgroundColor: silverwhite,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -43,7 +38,7 @@ class _SettingsState extends State<Settings> {
             ),
             SizedBox(height: 300),
             Container(
-              color: mediumBlue,
+              color: Colors.cyan,
               child: Text(
                 "THIS IS WHERE THE SETTINGS WILL BE",
                 style: TextStyle(fontSize: 20, fontFamily: 'PressStart2P'),

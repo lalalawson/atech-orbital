@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-import 'package:purrductive/HomePage.dart';
-import 'package:purrductive/ToDoList.dart';
+import 'package:purrductive/const/routeNames.dart';
+import 'package:purrductive/const/colors.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 class Pomodoro extends StatefulWidget {
   @override
@@ -11,36 +11,32 @@ class Pomodoro extends StatefulWidget {
 class _PomodoroState extends State<Pomodoro> {
   @override
   Widget build(BuildContext context) {
-    const offWhite = const Color(0xFFeae2b7);
-    const red = const Color(0xFFe63946);
-    const lightBlue = const Color(0xFFa8dadc);
-    const mediumBlue = const Color(0xFF457b9d);
-    const darkBlue = const Color(0xFF1d3557);
-
     return Scaffold(
-      backgroundColor: offWhite,
+      backgroundColor: silverwhite,
       body: SafeArea(
         child: Column(
           children: <Widget>[
             SizedBox(height: 300),
             Container(
-              color: mediumBlue,
-              child: Text(
-                "THIS IS WHERE THE TIMER WILL BE",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'PressStart2P',
+              color: silverwhite,
+              child: Countdown(
+                seconds: 10,
+                build: (_, double time) => Text(
+                  time.toString(),
+                  style: TextStyle(fontSize: 50.0, fontFamily: 'PixelOperator'),
                 ),
-                textAlign: TextAlign.center,
+                //interval: Duration(milliseconds: 100),
+                onFinished: () {
+                  print('Timer is done!');
+                },
               ),
             ),
-            SizedBox(height: 400),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    goToHome(context);
+                    Navigator.pushReplacementNamed(context, homeScreen);
                   },
                   child: Icon(
                     Icons.home,
@@ -50,7 +46,7 @@ class _PomodoroState extends State<Pomodoro> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    goToToDoList(context);
+                    Navigator.pushReplacementNamed(context, toDoListPage);
                   },
                   child: Icon(
                     Icons.calendar_today,
@@ -66,13 +62,13 @@ class _PomodoroState extends State<Pomodoro> {
     );
   }
 
-  Future goToHome(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
-
-  Future goToToDoList(context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ToDoList()));
-  }
+//  Future goToHome(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => HomePage()));
+//  }
+//
+//  Future goToToDoList(context) async {
+//    Navigator.push(
+//        context, MaterialPageRoute(builder: (context) => ToDoList()));
+//  }
 }
