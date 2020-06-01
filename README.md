@@ -32,13 +32,20 @@ A.Tech is planning to make a one-stop mobile productivity app called "purrductiv
 
 
 
-## Functionality
+## Scope of Project
 
-Our app attempts to solve the problems at hand via various functions take work together. Firstly, we intend to have a simple to-do list, allowing users to organize their tasks efficiently and have a quick overview. This allows users to zoom in quickly on priority targets. 
+Our app attempts to solve the problems at hand via various functions take work together.
 
-Current proposed to do list:
-<img src="/images/ss3.png" alt="pethome" width="200"/>
+The app is mainly looking at helping and encouraging users to stay on task, tied in with a unique twist by including our gamification system as well as a splash of adorable pixel art! We are currently using Flutter to create our application.
 
+Here are some of the functionalities we are intending to incoporate: 
+
+Firstly, we intend to have a simple to-do list, allowing users to organize their tasks efficiently and have a quick overview. This allows users to zoom in quickly on priority targets. 
+
+Current implemented to do list:
+<img src="https://i.imgur.com/vMFVrnD.png" alt="pethome" width="200"/>
+<img src="https://imgur.com/DPFXGbh.png" alt="pethome" width="200"/>
+<img src="https://imgur.com/tVYxOBi.png" alt="pethome" width="200"/>
 
 
 Then, we will introduce users to our pomodoro timer, which helps the users split their workload into short 25mins focus sprints, followed by a 5-10mins break in between. This cycle is also known as 1 pomodoro, and after 4 pomodoros, users will be prompted for a 15-30mins break. (Users will also have the flexibility to edit their preferred timings if required). The illusion of a 'deadline' tend to encourages users to focus on the task and hand, and also helps to break large amount of work into more digestable bite sizes. 
@@ -51,27 +58,17 @@ Current proposed timer page:
 Next, we intend to incentivize our users for focusing and clearing off tasks through gamification of our app. As you probably would have noticed, there is a cute animal on the screenshots of our app. The animal is actually your companion! We are intending to incorporate plenty of cute pixelated sprites into our app to serve as your companion! Afterall, it can be more encouraging to focus with someone at time! You are greeted by your companion everytime you login, and they remind you of your tasks at hand. 
 
 Current proposed homepage:
-<img src="/images/ss1.png" alt="pethome" width="200"/>
-
-[Drive Link](https://drive.google.com/file/d/1MYNt2xGF2z-jZndUQPdUdSsueJ7ZqXHc/view?usp=sharing)
-
-
+<img src="https://i.imgur.com/UHicodJ.png" alt="pethome" width="200"/>
+<img src="https://i.imgur.com/qwIUvhx.png" alt="pethome" width="200"/>
 
 Everytime users clear a pomodoro, or their very own custom focus session, or when they clear a task at hand, they get awarded with in-game currency. With that currency, they get to unlock different avatars of their liking, purchase accessories for their avatars, or even decorate the avatar's home! 
 
 Current proposed pethome:
 <img src="/images/ss2.png" alt="pethome" width="200"/>
 
-[Drive Link](https://drive.google.com/file/d/1HgDmVf0MkLwZQsCawayN9MzWnGj4MsId/view?usp=sharing)
-
-
-
 We are also looking into expand into multiplayer functions, where we will be able to create group focus sessions with our friends or colleagues, such that everyone can view each other's avatars, and also encourage our peers to study together! It is also worth to mention that if users leave the timer screen (i.e. to browse other apps), the timer would not continue! Thus, the users will not be able to collect their rewards. This serves to boost user's self discipline by providing them with a reason to not get distracted by other applications. 
 
 
-## Project Scope
-
-As explained, the app is mainly looking at helping and encouraging users to stay on task! With a unique twist by including our gamification system as well as a splash of adorable pixel art! We are currently using Flutter to create our application.
 
 ### Timeline of Features to be completed
 
@@ -81,12 +78,13 @@ As explained, the app is mainly looking at helping and encouraging users to stay
 - [x] App skeleton done, with basic functionalities such as navigating to other pages / having a drawer
 - [x] A set of avatars drawn and animated 
 - [x] Implement the avatar into the app
+- [x] Implement a to-do list features
 
 2. Milestone 2 (29 June 2020):
 
 - [ ] User log-in & authentication with Firebase is completed
-- [ ] Timer function implemented
-- [ ] To-Do list function implemented 
+- [ ] Pomodoro Timer function implemented
+- [ ] Improve To-Do list features implemented (group them into categories etc)
 - [ ] Start designing pet's home page & allow for edits to decorations
 
 
@@ -96,3 +94,15 @@ As explained, the app is mainly looking at helping and encouraging users to stay
 - [ ] Create inventory / shop for users to spend in-game currency
 - [ ] Implement multiplayer studying 
 
+## Uniqueness (How are we different from similar platforms?)
+
+1. To-Do Lists in the App Store (Any.do / Tasks / Todoist / Google Tasks) 
+ - Most to-do lists in the app store are great at sorting out your work, but they do not give you the incentive to. You might use it for a week or two at max and gradually forget about your list. We plan to provide an incentive for you to use your to-do list, and give you satisfaction when you check off tasks! 
+ 
+2. Productivity Timers / Trackers in App Store
+ - Most timers are great and gets the job done. But similar problem arises when you lack incentive to start timing yourself. We want to provide users with the excitement and 'want' to start their work, so that they have higher morale and better focus. Similarly, we want to provide a one-stop productive app by merging to-dos and timers.
+ 
+
+## Project Workflow 
+
+<img src="https://i.imgur.com/E0i0mRw.png" alt="project workflow"/>
