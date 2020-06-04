@@ -6,6 +6,7 @@ import 'package:purrductive/homepage/HomePage.dart';
 import 'package:purrductive/pethomepage/PetHomePage.dart';
 import 'package:purrductive/settingspage/Settings.dart';
 import 'package:purrductive/timerpage/PomodoroTimer.dart';
+import 'package:purrductive/timerpage/countdown.dart';
 import 'package:purrductive/todolistpage/screens/tasks_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:purrductive/todolistpage/task/TaskData.dart';
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
           yongler: (BuildContext context) => YongLer(),
           petHomePage: (BuildContext context) => PetHomePage(),
           settingsPage: (BuildContext context) => Settings(),
-          timerPage: (BuildContext context) => Pomodoro(),
+          timerPage: (BuildContext context) => CountDownTimer(),
           toDoListPage: (BuildContext context) => TasksScreen(),
         },
       ),

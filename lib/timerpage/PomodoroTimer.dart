@@ -61,14 +61,4 @@ class _PomodoroState extends State<Pomodoro> {
       ),
     );
   }
-
-//  Future goToHome(context) async {
-//    Navigator.push(
-//        context, MaterialPageRoute(builder: (context) => HomePage()));
-//  }
-//
-//  Future goToToDoList(context) async {
-//    Navigator.push(
-//        context, MaterialPageRoute(builder: (context) => ToDoList()));
-//  }
 }
