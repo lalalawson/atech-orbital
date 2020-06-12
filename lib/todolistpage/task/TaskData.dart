@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:purrductive/todolistpage/task/task.dart';
 import 'dart:collection';
+import 'package:purrductive/const/months.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [];
@@ -32,8 +33,13 @@ class TaskData extends ChangeNotifier {
     return this.taskCount == 0;
   }
 
-  void addTask(String newTaskTitle) {
-    final task = Task(name: newTaskTitle);
+  void addTask(String newTaskTitle, String newRemarks, DateTime dateTime) {
+    String date = dateTime.day.toString() + " " + monthsInYear[dateTime.month];
+    final task = Task(
+        name: newTaskTitle,
+        remarks: newRemarks,
+        dateTime: dateTime,
+        date: date);
 
     _tasks.add(task);
     notifyListeners();
