@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Image.asset('images/board.png'),
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
                             'Welcome back username',

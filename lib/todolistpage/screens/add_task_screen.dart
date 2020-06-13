@@ -14,7 +14,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   Widget build(BuildContext context) {
     String newTaskTitle;
     String newRemarks;
-    DateTime dateTime;
+    DateTime dateTime = DateTime.now();
     bool isChanged = false;
 
     return Container(
@@ -98,7 +98,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   size: 25,
                 ),
                 title: Text(
-                  "Date Due",
+                  "Pick a date",
                   //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'PixelOperator',
@@ -124,6 +124,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 ],
               ),
               FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 onPressed: () {
                   if (newTaskTitle != null) {
                     if (newRemarks == null) {
@@ -136,13 +139,16 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   }
                   Navigator.pop(context);
                 },
-                child: Text(
-                  'Add Task',
-                  style: TextStyle(
-                    fontFamily: 'pixelsix',
-                    fontSize: 30,
-                    letterSpacing: 3,
-                    color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Add Task',
+                    style: TextStyle(
+                      fontFamily: 'pixelsix',
+                      fontSize: 30,
+                      letterSpacing: 3,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 color: yellow,

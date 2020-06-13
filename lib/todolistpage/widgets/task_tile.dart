@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:purrductive/const/colors.dart';
 
-class TaskTile extends StatelessWidget {
+class TaskTile extends StatefulWidget {
+  final Key key;
   final bool isChecked;
   final String taskTitle;
   final String remarks;
@@ -11,7 +12,8 @@ class TaskTile extends StatelessWidget {
   final Function longPressCallback;
 
   TaskTile(
-      {this.isChecked,
+      {this.key,
+      this.isChecked,
       this.taskTitle,
       this.remarks,
       this.dateTime,
@@ -20,10 +22,27 @@ class TaskTile extends StatelessWidget {
       this.longPressCallback});
 
   @override
+  _TaskTileState createState() => _TaskTileState();
+}
+
+class _TaskTileState extends State<TaskTile> {
+  bool isOverdue() {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final comparison = DateTime(
+        widget.dateTime.year, widget.dateTime.month, widget.dateTime.day);
+    if (today == comparison) {
+      return false;
+    } else {
+      return widget.dateTime.isBefore(DateTime.now());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Dismissible(
       onDismissed: (direction) {
-        longPressCallback();
+        widget.longPressCallback();
       },
       direction: DismissDirection.endToStart,
       background: Container(
@@ -53,27 +72,38 @@ class TaskTile extends StatelessWidget {
       key: UniqueKey(),
       child: ListTile(
         title: Text(
-          taskTitle,
+          widget.taskTitle,
           style: TextStyle(
             fontFamily: 'pixelmix',
             fontSize: 20,
             color: Colors.black,
-            decoration: isChecked ? TextDecoration.lineThrough : null,
+            decoration: widget.isChecked ? TextDecoration.lineThrough : null,
           ),
         ),
-        subtitle: Text(
-          remarks + "\n\n" + date,
+        subtitle: widget.remarks.isEmpty
+            ? null
+            : Text(
+                widget.remarks,
+                style: TextStyle(
+                  fontFamily: 'pixelmix',
+                  fontSize: 14,
+                  color: Colors.grey[800],
+                  decoration:
+                      widget.isChecked ? TextDecoration.lineThrough : null,
+                ),
+              ),
+        leading: Checkbox(
+          value: widget.isChecked,
+          activeColor: greenblue,
+          onChanged: widget.checkboxCallback,
+        ),
+        trailing: Text(
+          widget.date,
           style: TextStyle(
             fontFamily: 'pixelmix',
-            fontSize: 14,
-            color: Colors.grey[800],
-            decoration: isChecked ? TextDecoration.lineThrough : null,
+            fontSize: 15,
+            color: isOverdue() ? Colors.red : Colors.black,
           ),
-        ),
-        trailing: Checkbox(
-          value: isChecked,
-          activeColor: greenblue,
-          onChanged: checkboxCallback,
         ),
       ),
     );

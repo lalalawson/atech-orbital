@@ -23,7 +23,7 @@ class TasksScreen extends StatelessWidget {
               alignment: Alignment.center,
               children: <Widget>[
                 Center(
-                  child: Image.asset('images/taskoverview.png'),
+                  child: Image.asset('images/TaskBoard.png'),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
