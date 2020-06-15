@@ -36,10 +36,12 @@ class TaskData extends ChangeNotifier {
   void addTask(String newTaskTitle, String newRemarks, DateTime dateTime) {
     String date = dateTime.day.toString() + " " + monthsInYear[dateTime.month];
     final task = Task(
-        name: newTaskTitle,
-        remarks: newRemarks,
-        dateTime: dateTime,
-        date: date);
+      name: newTaskTitle,
+      remarks: newRemarks,
+      dateTime: dateTime,
+      date: date,
+      isOverDueTask: false,
+    );
 
     _tasks.add(task);
     notifyListeners();

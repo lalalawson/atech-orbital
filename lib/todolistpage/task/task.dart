@@ -4,9 +4,16 @@ class Task {
   final DateTime dateTime;
   final String date;
   bool isDone;
+  bool isOverDueTask;
 
-  Task(
-      {this.name, this.remarks, this.dateTime, this.date, this.isDone = false});
+  Task({
+    this.name,
+    this.remarks,
+    this.dateTime,
+    this.date,
+    this.isDone = false,
+    this.isOverDueTask = false,
+  });
 
   void toggleDone() {
     isDone = !isDone;

@@ -25,6 +25,7 @@ class _TasksListState extends State<TasksList> {
                 dateTime: task.dateTime,
                 date: task.date,
                 isChecked: task.isDone,
+                isOverdueTask: task.isOverDueTask,
                 checkboxCallback: (bool checkboxState) {
                   taskData.updateTask(task);
                 },

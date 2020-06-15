@@ -14,10 +14,9 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: silverwhite,
       appBar: MyAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Stack(
         children: <Widget>[
-          Padding(
+          /*Padding(
             padding: EdgeInsets.only(bottom: 10),
             child: Stack(
               alignment: Alignment.center,
@@ -114,24 +113,91 @@ class TasksScreen extends StatelessWidget {
                 )
               ],
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(
-                color: silverwhite,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
+          ), */
+          Container(
+            decoration: BoxDecoration(
+              color: silverwhite,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
-              child: Provider.of<TaskData>(context).isEmpty
-                  ? Center(child: EmptyListMessage())
-                  : TasksList(),
             ),
+            child: Provider.of<TaskData>(context).isEmpty
+                ? Center(child: EmptyListMessage())
+                : TasksList(),
           ),
+          Positioned(
+            bottom: 50,
+            left: 40,
+            right: 40,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                RaisedButton(
+                  color: yellow,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    side: BorderSide(
+                      width: 4,
+                      color: darkYellow,
+                    ),
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: AddTaskScreen(),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Add Task",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'pixelsix',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                RaisedButton(
+                  color: cyan,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    side: BorderSide(
+                      width: 4,
+                      color: darkCyan,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, timerPage);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Start Timer",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'pixelsix',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

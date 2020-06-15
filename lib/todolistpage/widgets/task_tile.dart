@@ -10,6 +10,7 @@ class TaskTile extends StatefulWidget {
   final String date;
   final Function checkboxCallback;
   final Function longPressCallback;
+  final bool isOverdueTask;
 
   TaskTile(
       {this.key,
@@ -17,6 +18,7 @@ class TaskTile extends StatefulWidget {
       this.taskTitle,
       this.remarks,
       this.dateTime,
+      this.isOverdueTask = false,
       this.date,
       this.checkboxCallback,
       this.longPressCallback});
@@ -48,25 +50,23 @@ class _TaskTileState extends State<TaskTile> {
       background: Container(
         alignment: Alignment.centerRight,
         color: Colors.red,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: <Widget>[
-              Icon(
-                Icons.clear,
-                size: 30,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.clear,
+              size: 30,
+              color: Colors.white,
+            ),
+            Text(
+              "Delete",
+              style: TextStyle(
+                fontSize: 13,
                 color: Colors.white,
+                fontFamily: 'pixelmix',
               ),
-              Text(
-                "Delete",
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.white,
-                  fontFamily: 'pixelmix',
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       key: UniqueKey(),
