@@ -13,6 +13,7 @@ class _TasksListState extends State<TasksList> {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
+      width: 400,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2),
         border: Border.all(
