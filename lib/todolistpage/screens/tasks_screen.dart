@@ -7,14 +7,30 @@ import 'package:purrductive/todolistpage/task/TaskData.dart';
 import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/const/appbar.dart';
 import 'package:purrductive/todolistpage/widgets/EmptyListMessage.dart';
+import 'package:purrductive/todolistpage/widgets/Progress_Bar.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: silverwhite,
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        backgroundColor: silverwhite,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+        title: Text(
+          "Tasks",
+          style: TextStyle(
+            fontSize: 35,
+            fontFamily: 'PixelOperator',
+            color: Colors.black,
+          ),
+        ),
+      ), //MyAppBar(),
       body: Stack(
+        alignment: Alignment.bottomCenter,
         children: <Widget>[
           /*Padding(
             padding: EdgeInsets.only(bottom: 10),
@@ -114,92 +130,107 @@ class TasksScreen extends StatelessWidget {
               ],
             ),
           ), */
-          Container(
-            decoration: BoxDecoration(
-              color: silverwhite,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Progressbar(context),
               ),
-            ),
-            child: Provider.of<TaskData>(context).isEmpty
-                ? Center(child: EmptyListMessage())
-                : TasksList(),
-          ),
-          Positioned(
-            bottom: 50,
-            left: 40,
-            right: 40,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                RaisedButton(
-                  color: yellow,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    side: BorderSide(
-                      width: 4,
-                      color: darkYellow,
-                    ),
-                  ),
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          child: AddTaskScreen(),
+              Expanded(
+                flex: 10,
+                child: listOfTask(context),
+              ),
+              Expanded(
+                flex: 3,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    RaisedButton(
+                      color: yellow,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(
+                          width: 4,
+                          color: darkYellow,
                         ),
                       ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Add Task",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'pixelsix',
-                        color: Colors.white,
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (context) => SingleChildScrollView(
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: AddTaskScreen(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Add Task",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'pixelsix',
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                RaisedButton(
-                  color: cyan,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    side: BorderSide(
-                      width: 4,
-                      color: darkCyan,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, timerPage);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Start Timer",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'pixelsix',
-                        color: Colors.white,
+                    RaisedButton(
+                      color: cyan,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(
+                          width: 4,
+                          color: darkCyan,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, timerPage);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Start Timer",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'pixelsix',
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          )
+              ),
+            ],
+          ),
         ],
       ),
     );
+  }
+
+  Widget listOfTask(BuildContext context) {
+    return Provider.of<TaskData>(context).isEmpty
+        ? EmptyListMessage()
+        : TasksList();
+  }
+
+  Widget Progressbar(BuildContext context) {
+    if (!Provider.of<TaskData>(context).isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: ProgressBar(),
+      );
+    } else {
+      return Container();
+    }
   }
 }

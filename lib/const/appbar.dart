@@ -5,8 +5,11 @@ class MyAppBar extends AppBar {
   MyAppBar({
     Key key,
   }) : super(
-            key: key,
-            backgroundColor: silverwhite,
-            elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black));
+          key: key,
+          backgroundColor: silverwhite,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        );
 }

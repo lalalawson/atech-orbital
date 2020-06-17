@@ -6,13 +6,28 @@ import 'package:purrductive/const/months.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [];
+  List<Task> _overdueTask = [];
 
   UnmodifiableListView<Task> get tasks {
     return UnmodifiableListView(_tasks);
   }
 
+  UnmodifiableListView<Task> get overdueTasks {
+    return UnmodifiableListView(_overdueTask);
+  }
+
   int get taskCount {
     return _tasks.length;
+  }
+
+  int get overdueTaskCount {
+    int count = 0;
+    for (int i = 0; i < _tasks.length; i++) {
+      if (_tasks[i].isOverdue()) {
+        count++;
+      }
+    }
+    return count;
   }
 
   int get taskDone {
@@ -33,6 +48,14 @@ class TaskData extends ChangeNotifier {
     return this.taskCount == 0;
   }
 
+  bool get overdueIsEmpty {
+    return this.overdueTaskCount == 0;
+  }
+
+  double get progress {
+    return this.taskDone / this.taskCount;
+  }
+
   void addTask(String newTaskTitle, String newRemarks, DateTime dateTime) {
     String date = dateTime.day.toString() + " " + monthsInYear[dateTime.month];
     final task = Task(
@@ -42,8 +65,8 @@ class TaskData extends ChangeNotifier {
       date: date,
       isOverDueTask: false,
     );
-
     _tasks.add(task);
+
     notifyListeners();
   }
 
@@ -54,6 +77,11 @@ class TaskData extends ChangeNotifier {
 
   void deleteTask(Task task) {
     _tasks.remove(task);
+    notifyListeners();
+  }
+
+  void clearTasks() {
+    _tasks = [];
     notifyListeners();
   }
 }

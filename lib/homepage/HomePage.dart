@@ -104,8 +104,20 @@ class _HomePageState extends State<HomePage> {
                             ),
                             textAlign: TextAlign.center,
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40),
+                            child: Text(
+                              '${Provider.of<TaskData>(context).taskLeft} Tasks left to do',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontFamily: 'PixelOperator',
+                                letterSpacing: 2.5,
+                              ),
+                            ),
+                          ),
                           Text(
-                            '${Provider.of<TaskData>(context).taskLeft} Tasks left to do',
+                            '${Provider.of<TaskData>(context).overdueTaskCount} Tasks overdue',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 40,

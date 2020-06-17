@@ -46,9 +46,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
               TextField(
                 decoration: InputDecoration(
-                  hintText: "Enter Task to be done",
+                  hintText: "Enter Task",
                   hintStyle: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     color: Colors.grey,
                   ),
                   enabledBorder: UnderlineInputBorder(
@@ -72,7 +72,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 decoration: InputDecoration(
                   hintText: "Additional Information",
                   hintStyle: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     color: Colors.grey,
                   ),
                   enabledBorder: UnderlineInputBorder(

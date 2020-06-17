@@ -3,19 +3,19 @@ import 'package:purrductive/todolistpage/widgets/task_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:purrductive/todolistpage/task/TaskData.dart';
 
-class TasksList extends StatefulWidget {
+class OverdueTasksList extends StatefulWidget {
   @override
-  _TasksListState createState() => _TasksListState();
+  _OverdueTasksListState createState() => _OverdueTasksListState();
 }
 
-class _TasksListState extends State<TasksList> {
+class _OverdueTasksListState extends State<OverdueTasksList> {
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskData>(
       builder: (context, taskData, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
-            final task = taskData.tasks[index];
+            final task = taskData.overdueTasks[index];
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: TaskTile(
@@ -40,6 +40,4 @@ class _TasksListState extends State<TasksList> {
       },
     );
   }
-
-  Widget _buildtaskslist() {}
 }
