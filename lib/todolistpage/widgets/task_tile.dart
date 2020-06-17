@@ -54,7 +54,7 @@ class _TaskTileState extends State<TaskTile> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Icon(
-              Icons.clear,
+              Icons.delete,
               size: 30,
               color: Colors.white,
             ),

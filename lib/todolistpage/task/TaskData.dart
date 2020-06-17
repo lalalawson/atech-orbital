@@ -12,6 +12,10 @@ class TaskData extends ChangeNotifier {
     return UnmodifiableListView(_tasks);
   }
 
+  List<Task> get listTask {
+    return _tasks;
+  }
+
   UnmodifiableListView<Task> get overdueTasks {
     return UnmodifiableListView(_overdueTask);
   }
