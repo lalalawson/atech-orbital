@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "435036747934",
+    "firebase_url": "https://purrductive.firebaseio.com",
+    "project_id": "purrductive",
+    "storage_bucket": "purrductive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435036747934:android:91c91e6d44f9d2124ba38f",
+        "android_client_info": {
+          "package_name": "com.yonglertang.purrductive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435036747934-sbt7jdj7sui9en17sl6oc8br4rk0v6cj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXQx0-CpRv-qRuPeGxZ_lucraWJcjEtgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435036747934-sbt7jdj7sui9en17sl6oc8br4rk0v6cj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
