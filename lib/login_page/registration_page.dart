@@ -1,10 +1,9 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/const/components.dart';
 import 'package:purrductive/const/routeNames.dart';
 
-class CredentialsPage extends StatelessWidget {
+class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,12 +13,9 @@ class CredentialsPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TyperAnimatedTextKit(
-              speed: Duration(milliseconds: 200),
-              pause: Duration(milliseconds: 1800),
-              isRepeatingAnimation: true,
-              text: ['purrductive'],
-              textStyle: TextStyle(
+            Text(
+              'register',
+              style: TextStyle(
                 fontFamily: 'pixelsix',
                 fontSize: 50.0,
               ),
@@ -55,32 +51,18 @@ class CredentialsPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 15.0,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, registrationPage);
-              },
-              child: Container(
-                child: Text(
-                  'new here? click here to sign up',
-                  style: TextStyle(fontFamily: 'pixelmix', fontSize: 12.0),
-                ),
-              ),
-            ),
-            SizedBox(
               height: 40.0,
             ),
             SizedBox(
               width: 200.0,
               child: RaisedButton(
-                color: cyan,
+                color: yellow,
                 elevation: 5.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: BorderSide(
                     width: 4,
-                    color: darkCyan,
+                    color: darkYellow,
                   ),
                 ),
                 onPressed: () {
@@ -89,7 +71,7 @@ class CredentialsPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    "Login",
+                    "Register",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'pixelsix',
@@ -103,5 +85,6 @@ class CredentialsPage extends StatelessWidget {
         ),
       ),
     );
+    ;
   }
 }

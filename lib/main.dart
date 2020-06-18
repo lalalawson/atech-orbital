@@ -4,6 +4,7 @@ import 'package:purrductive/credits/Lawson.dart';
 import 'package:purrductive/credits/YongLer.dart';
 import 'package:purrductive/homepage/HomePage.dart';
 import 'package:purrductive/login_page/credentials_page.dart';
+import 'package:purrductive/login_page/registration_page.dart';
 import 'package:purrductive/pethomepage/PetHomePage.dart';
 import 'package:purrductive/settingspage/Settings.dart';
 import 'package:purrductive/timerpage/countdown.dart';
@@ -28,10 +29,11 @@ class _MyAppState extends State<MyApp> {
       builder: (context) => TaskData(),
       child: MaterialApp(
         title: 'purrductive',
-        home: LoginPage(),
+        home: CredentialsPage(),
         routes: <String, WidgetBuilder>{
           loginPage: (BuildContext context) => LoginPage(),
           credentialsPage: (BuildContext context) => CredentialsPage(),
+          registrationPage: (BuildContext context) => RegistrationPage(),
           homeScreen: (BuildContext context) => HomePage(),
           lawson: (BuildContext context) => Lawson(),
           yongler: (BuildContext context) => YongLer(),

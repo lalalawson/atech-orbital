@@ -13,16 +13,19 @@ class LoginPage extends StatelessWidget {
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: TyperAnimatedTextKit(
-              speed: Duration(milliseconds: 200),
-              pause: Duration(milliseconds: 1800),
-              isRepeatingAnimation: true,
-              text: ['purrductive'],
-              textStyle: TextStyle(
-                fontFamily: 'pixelsix',
-                fontSize: 50.0,
+            child: Hero(
+              tag: 'logo',
+              child: TyperAnimatedTextKit(
+                speed: Duration(milliseconds: 200),
+                pause: Duration(milliseconds: 1800),
+                isRepeatingAnimation: true,
+                text: ['purrductive'],
+                textStyle: TextStyle(
+                  fontFamily: 'pixelsix',
+                  fontSize: 50.0,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
           SizedBox(
