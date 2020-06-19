@@ -12,13 +12,42 @@ class RegistrationPage extends StatefulWidget {
   _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _RegistrationPageState extends State<RegistrationPage>
+    with SingleTickerProviderStateMixin {
   String email;
   String password;
   String username;
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
   final _firestore = Firestore.instance;
+
+  AnimationController controller;
+  Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+
+    animation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.decelerate,
+    );
+
+    controller.forward();
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,120 +61,134 @@ class _RegistrationPageState extends State<RegistrationPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'register',
-                style: TextStyle(
-                  fontFamily: 'pixelsix',
-                  fontSize: 50.0,
+              Center(
+                child: Text(
+                  'register',
+                  style: TextStyle(
+                    fontFamily: 'pixelsix',
+                    fontSize: 50.0,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: 20.0,
               ),
-              TextField(
-                onChanged: (value) {
-                  username = value;
-                },
-                style: TextStyle(
-                  fontFamily: 'pixelmix',
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w300,
-                ),
-                textAlign: TextAlign.center,
-                decoration: kTextFieldInputDecoration.copyWith(
-                  hintText: 'Username',
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              TextField(
-                onChanged: (value) {
-                  email = value;
-                },
-                style: TextStyle(
-                  fontFamily: 'pixelmix',
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w300,
-                ),
-                textAlign: TextAlign.center,
-                decoration: kTextFieldInputDecoration.copyWith(
-                  hintText: 'email',
+              Container(
+                height: animation.value * 50,
+                child: TextField(
+                  onChanged: (value) {
+                    username = value;
+                  },
+                  style: TextStyle(
+                    fontFamily: 'pixelmix',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center,
+                  decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'username',
+                  ),
                 ),
               ),
               SizedBox(
                 height: 10.0,
               ),
-              TextField(
-                obscureText: true,
-                onChanged: (value) {
-                  password = value;
-                },
-                style: TextStyle(
-                  fontFamily: 'pixelmix',
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w300,
+              Container(
+                height: animation.value * 50,
+                child: TextField(
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  style: TextStyle(
+                    fontFamily: 'pixelmix',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center,
+                  decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'email',
+                  ),
                 ),
-                textAlign: TextAlign.center,
-                decoration: kTextFieldInputDecoration.copyWith(
-                  hintText: 'password',
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                height: animation.value * 50,
+                child: TextField(
+                  obscureText: true,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  style: TextStyle(
+                    fontFamily: 'pixelmix',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center,
+                  decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'password',
+                  ),
                 ),
               ),
               SizedBox(
                 height: 40.0,
               ),
-              SizedBox(
-                width: 200.0,
-                child: RaisedButton(
-                  color: yellow,
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(
-                      width: 4,
-                      color: darkYellow,
+              Hero(
+                tag: 'register',
+                child: SizedBox(
+                  width: 200.0,
+                  child: RaisedButton(
+                    color: yellow,
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      side: BorderSide(
+                        width: 4,
+                        color: darkYellow,
+                      ),
                     ),
-                  ),
-                  onPressed: () async {
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      final newUser =
-                          await _auth.createUserWithEmailAndPassword(
-                        email: email,
-                        password: password,
-                      );
-
-                      String uid = newUser.user.uid;
-
-                      _firestore.collection('users').document(uid).setData({
-                        "email": email,
-                        "username": username,
-                        "password": password,
-                        "uid": uid,
-                        "currency": 0,
+                    onPressed: () async {
+                      setState(() {
+                        showSpinner = true;
                       });
+                      try {
+                        final newUser =
+                            await _auth.createUserWithEmailAndPassword(
+                          email: email,
+                          password: password,
+                        );
 
-                      if (newUser != null) {
-                        Navigator.pushNamed(context, credentialsPage);
-                        setState(() {
-                          showSpinner = false;
+                        String uid = newUser.user.uid;
+
+                        _firestore.collection('users').document(uid).setData({
+                          "email": email,
+                          "username": username,
+                          "password": password,
+                          "uid": uid,
+                          "currency": 0,
                         });
+
+                        if (newUser != null) {
+                          Navigator.pushNamed(context, credentialsPage);
+                          setState(() {
+                            showSpinner = false;
+                          });
+                        }
+                      } catch (e) {
+                        print(e);
                       }
-                    } catch (e) {
-                      print(e);
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      "Register",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'pixelsix',
-                        color: Colors.black,
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        "Register",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'pixelsix',
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),

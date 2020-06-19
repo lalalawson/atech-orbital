@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context) => TaskData(),
       child: MaterialApp(
         title: 'purrductive',
-        home: CredentialsPage(),
+        home: LoginPage(),
         routes: <String, WidgetBuilder>{
           loginPage: (BuildContext context) => LoginPage(),
           credentialsPage: (BuildContext context) => CredentialsPage(),
