@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:purrductive/const/routeNames.dart';
 import 'package:purrductive/const/colors.dart';
@@ -8,8 +10,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 
 class HomePage extends StatefulWidget {
+  String username;
+  HomePage({Key key, this.username});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -19,11 +25,35 @@ class _HomePageState extends State<HomePage> {
   double screenWidth, screenHeight;
   final _auth = FirebaseAuth.instance;
 
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+//      username = await _firestore
+//          .collection("users")
+//          .document(user.uid)
+//          .get()
+//          .then((value) => username = value.data['username']);
+//      setState(() {});
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     screenHeight = size.height;
     screenWidth = size.width;
+    String name = widget.username;
 
     return Scaffold(
       backgroundColor: silverwhite,
@@ -50,6 +80,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget homePage(context) {
+    String name = widget.username;
     return AnimatedPositioned(
       top: isCollapsed ? 0 : 0 * screenHeight,
       bottom: isCollapsed ? 0 : -0 * screenHeight,
@@ -100,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            'Welcome back username',
+                            'Welcome back\n\n$name',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 35,
@@ -110,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                             textAlign: TextAlign.center,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 40),
+                            padding: const EdgeInsets.only(top: 20),
                             child: Text(
                               '${Provider.of<TaskData>(context).taskLeft} Tasks left to do',
                               style: TextStyle(

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:purrductive/const/appbar.dart';
 import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/const/components.dart';
 import 'package:purrductive/const/routeNames.dart';
@@ -13,8 +15,10 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   String email;
   String password;
+  String username;
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
+  final _firestore = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +26,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
       inAsyncCall: showSpinner,
       child: Scaffold(
         backgroundColor: silverwhite,
+        appBar: MyAppBar(),
         body: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
@@ -37,6 +42,23 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
               SizedBox(
                 height: 20.0,
+              ),
+              TextField(
+                onChanged: (value) {
+                  username = value;
+                },
+                style: TextStyle(
+                  fontFamily: 'pixelmix',
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w300,
+                ),
+                textAlign: TextAlign.center,
+                decoration: kTextFieldInputDecoration.copyWith(
+                  hintText: 'Username',
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
               ),
               TextField(
                 onChanged: (value) {
@@ -92,7 +114,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     try {
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
+                        email: email,
+                        password: password,
+                      );
+
+                      String uid = newUser.user.uid;
+
+                      _firestore.collection('users').document(uid).setData({
+                        "email": email,
+                        "username": username,
+                        "password": password,
+                        "uid": uid,
+                        "currency": 0,
+                      });
+
                       if (newUser != null) {
                         Navigator.pushNamed(context, credentialsPage);
                         setState(() {

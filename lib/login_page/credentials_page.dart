@@ -5,6 +5,10 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/const/components.dart';
 import 'package:purrductive/const/routeNames.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:purrductive/homepage/HomePage.dart';
+
+final _firestore = Firestore.instance;
 
 class CredentialsPage extends StatefulWidget {
   @override
@@ -14,8 +18,11 @@ class CredentialsPage extends StatefulWidget {
 class _CredentialsPageState extends State<CredentialsPage> {
   String email;
   String password;
+  String userName;
   bool showSpinner = false;
 
+  final textController = TextEditingController();
+  final textController2 = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
   @override
@@ -44,6 +51,7 @@ class _CredentialsPageState extends State<CredentialsPage> {
                 height: 20.0,
               ),
               TextField(
+                controller: textController,
                 onChanged: (value) {
                   email = value;
                 },
@@ -61,6 +69,7 @@ class _CredentialsPageState extends State<CredentialsPage> {
                 height: 10.0,
               ),
               TextField(
+                controller: textController2,
                 onChanged: (value) {
                   password = value;
                 },
@@ -76,7 +85,7 @@ class _CredentialsPageState extends State<CredentialsPage> {
                 ),
               ),
               SizedBox(
-                height: 15.0,
+                height: 30.0,
               ),
               GestureDetector(
                 onTap: () {
@@ -85,12 +94,15 @@ class _CredentialsPageState extends State<CredentialsPage> {
                 child: Container(
                   child: Text(
                     'new here? click here to sign up',
-                    style: TextStyle(fontFamily: 'pixelmix', fontSize: 12.0),
+                    style: TextStyle(
+                      fontFamily: 'pixelmix',
+                      fontSize: 12.0,
+                    ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 40.0,
+                height: 30.0,
               ),
               SizedBox(
                 width: 200.0,
@@ -112,7 +124,21 @@ class _CredentialsPageState extends State<CredentialsPage> {
                       final user = await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
                       if (user != null) {
-                        Navigator.pushNamed(context, homeScreen);
+                        textController.clear();
+                        textController2.clear();
+                        email = '';
+                        password = '';
+                        await _firestore
+                            .collection("users")
+                            .document(user.user.uid)
+                            .get()
+                            .then((value) => userName = value.data['username']);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage(
+                                      username: userName,
+                                    )));
                         setState(() {
                           showSpinner = false;
                         });
@@ -126,7 +152,7 @@ class _CredentialsPageState extends State<CredentialsPage> {
                     child: Text(
                       "Login",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 25,
                         fontFamily: 'pixelsix',
                         color: Colors.black,
                       ),
