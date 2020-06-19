@@ -4,6 +4,10 @@ import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/todolistpage/widgets/tasks_list.dart';
 import 'package:provider/provider.dart';
 import 'package:purrductive/todolistpage/task/TaskData.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final _firestore = Firestore.instance;
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isCollapsed = true;
   double screenWidth, screenHeight;
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +203,8 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.black,
                   ),
                   onTap: () {
-                    //TODO: Logout function
+                    _auth.signOut();
+                    Navigator.pop(context);
                   },
                   title: Text(
                     "Logout",

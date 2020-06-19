@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>435036747934-5obg3r7f5t2iqo46ao87djo6083b2k9u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.435036747934-5obg3r7f5t2iqo46ao87djo6083b2k9u</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC0k2hjL4RLEgBSsFFItePcFuC5gAi1soI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>435036747934</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.yonglertang.purrductive</string>
+	<key>PROJECT_ID</key>
+	<string>purrductive</string>
+	<key>STORAGE_BUCKET</key>
+	<string>purrductive.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:435036747934:ios:5913b0036fa6e41a4ba38f</string>
+	<key>DATABASE_URL</key>
+	<string>https://purrductive.firebaseio.com</string>
+</dict>
+</plist>

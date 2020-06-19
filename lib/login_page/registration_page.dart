@@ -94,7 +94,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
                       if (newUser != null) {
-                        Navigator.pushNamed(context, homeScreen);
+                        Navigator.pushNamed(context, credentialsPage);
                         setState(() {
                           showSpinner = false;
                         });
