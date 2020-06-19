@@ -1,3 +1,6 @@
+const loginPage = '/loginPage';
+const credentialsPage = '/credentialsPage';
+const registrationPage = '/registrationPage';
 const homeScreen = '/homePage';
 const lawson = '/lawson';
 const yongler = '/yongler';
