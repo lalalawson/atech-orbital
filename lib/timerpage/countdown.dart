@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:purrductive/const/appbar.dart';
 import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/timerpage/CustomTimerPainter.dart';
+import 'package:purrductive/timerpage/timer_settings.dart';
 
 class CountDownTimer extends StatefulWidget {
   @override
@@ -10,7 +11,13 @@ class CountDownTimer extends StatefulWidget {
 
 class _CountDownTimerState extends State<CountDownTimer>
     with TickerProviderStateMixin {
+  int focusTime = 25;
+  int restTime = 5;
   AnimationController controller;
+
+  void getFocusTime(int time) {
+    focusTime = time;
+  }
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
@@ -55,7 +62,9 @@ class _CountDownTimerState extends State<CountDownTimer>
                             animation: controller,
                             builder: (BuildContext context, Widget child) {
                               return Text(
-                                timerString,
+                                controller.isAnimating
+                                    ? timerString
+                                    : '$focusTime:00',
                                 style: TextStyle(
                                     fontFamily: 'PixelOperator',
                                     fontSize: 112.0,
@@ -66,8 +75,23 @@ class _CountDownTimerState extends State<CountDownTimer>
                     ),
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    //todo: design button better
+                    onPressed: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (context) => TimerSettings(
+                                focusTime: focusTime,
+                                restTime: restTime,
+                                focusTimeCallback: (time) {
+                                  setState(() {
+                                    getFocusTime(time);
+                                  });
+                                },
+                              ));
+                    },
+                    child: Text('Settings'),
                   ),
+                  //todo: to include studying gif and spinning hourglass
                   AnimatedBuilder(
                       animation: controller,
                       builder: (context, child) {
