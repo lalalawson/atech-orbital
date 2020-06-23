@@ -141,6 +141,7 @@ class _CredentialsPageState extends State<CredentialsPage>
                       ),
                     ),
                     onPressed: () async {
+                      FocusScope.of(context).unfocus();
                       setState(() {
                         showSpinner = true;
                       });
