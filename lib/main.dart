@@ -7,6 +7,7 @@ import 'package:purrductive/login_page/credentials_page.dart';
 import 'package:purrductive/login_page/registration_page.dart';
 import 'package:purrductive/pethomepage/PetHomePage.dart';
 import 'package:purrductive/settingspage/Settings.dart';
+import 'package:purrductive/timerpage/TimerPage.dart';
 import 'package:purrductive/timerpage/countdown.dart';
 import 'package:purrductive/todolistpage/screens/tasks_screen.dart';
 import 'package:provider/provider.dart';

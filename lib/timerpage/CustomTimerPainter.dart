@@ -15,17 +15,20 @@ class CustomTimerPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    //size = Size(150.0, 150.0);
     Paint paint = Paint()
       ..color = backgroundColor
-      ..strokeWidth = 10.0
-      ..strokeCap = StrokeCap.butt
+      ..strokeWidth = 5.0
+      ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
-    canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
+    canvas.drawCircle(size.center(Offset.zero), size.width / 2, paint);
     paint.color = color;
     double progress = (1.0 - animation.value) * 2 * math.pi;
     canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
   }
+
+  Rect myRect = Offset.zero & const Size(100.0, 100.0);
 
   @override
   bool shouldRepaint(CustomTimerPainter old) {
