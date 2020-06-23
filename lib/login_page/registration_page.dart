@@ -54,12 +54,13 @@ class _RegistrationPageState extends State<RegistrationPage>
     return ModalProgressHUD(
       inAsyncCall: showSpinner,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: silverwhite,
         appBar: MyAppBar(),
         body: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
                 child: Text(
@@ -171,7 +172,8 @@ class _RegistrationPageState extends State<RegistrationPage>
                         });
 
                         if (newUser != null) {
-                          Navigator.pushNamed(context, credentialsPage);
+                          Navigator.pushReplacementNamed(
+                              context, credentialsPage);
                           setState(() {
                             showSpinner = false;
                           });
@@ -183,7 +185,7 @@ class _RegistrationPageState extends State<RegistrationPage>
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        "Register",
+                        "Sign Up",
                         style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'pixelsix',

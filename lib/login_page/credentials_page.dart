@@ -58,6 +58,7 @@ class _CredentialsPageState extends State<CredentialsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: silverwhite,
       appBar: MyAppBar(),
       body: ModalProgressHUD(
@@ -65,7 +66,7 @@ class _CredentialsPageState extends State<CredentialsPage>
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TyperAnimatedTextKit(
@@ -84,21 +85,19 @@ class _CredentialsPageState extends State<CredentialsPage>
               ),
               Container(
                 height: animation.value * 50,
-                child: Center(
-                  child: TextField(
-                    controller: textController,
-                    onChanged: (value) {
-                      email = value;
-                    },
-                    style: TextStyle(
-                      fontFamily: 'pixelmix',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w300,
-                    ),
-                    textAlign: TextAlign.center,
-                    decoration: kTextFieldInputDecoration.copyWith(
-                      hintText: 'email',
-                    ),
+                child: TextField(
+                  controller: textController,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  style: TextStyle(
+                    fontFamily: 'pixelmix',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center,
+                  decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'email',
                   ),
                 ),
               ),
@@ -107,22 +106,20 @@ class _CredentialsPageState extends State<CredentialsPage>
               ),
               Container(
                 height: animation.value * 50,
-                child: Center(
-                  child: TextField(
-                    controller: textController2,
-                    onChanged: (value) {
-                      password = value;
-                    },
-                    obscureText: true,
-                    style: TextStyle(
-                      fontFamily: 'pixelmix',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w300,
-                    ),
-                    textAlign: TextAlign.center,
-                    decoration: kTextFieldInputDecoration.copyWith(
-                      hintText: 'password',
-                    ),
+                child: TextField(
+                  controller: textController2,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  obscureText: true,
+                  style: TextStyle(
+                    fontFamily: 'pixelmix',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center,
+                  decoration: kTextFieldInputDecoration.copyWith(
+                    hintText: 'password',
                   ),
                 ),
               ),
@@ -180,7 +177,7 @@ class _CredentialsPageState extends State<CredentialsPage>
                       child: Text(
                         "Login",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           fontFamily: 'pixelsix',
                           color: Colors.black,
                         ),
