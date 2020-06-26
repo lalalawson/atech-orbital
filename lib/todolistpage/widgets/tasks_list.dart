@@ -44,7 +44,7 @@ class _TasksListState extends State<TasksList> {
             TL.removeAt(before);
             TL.insert(after, data);
           },
-          canBeDraggedTo: (one, two) => true,
+          canBeDraggedTo: (one, two) => TL.length > 1 ? true : false,
           dragElevation: 0.1,
         );
       },
