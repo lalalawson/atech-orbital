@@ -107,6 +107,7 @@ class _TimerPageState extends State<TimerPage> {
                 MaterialPageRoute(
                     builder: (context) => CountDownTimer(
                           timeDuration: focusTime,
+                          restTime: restTime,
                         )),
               );
             },
