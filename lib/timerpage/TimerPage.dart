@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:purrductive/const/appbar.dart';
 import 'package:purrductive/const/colors.dart';
+import 'package:purrductive/timerpage/countdown.dart';
 
 class TimerPage extends StatefulWidget {
   @override
@@ -100,7 +101,15 @@ class _TimerPageState extends State<TimerPage> {
                 color: darkCyan,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CountDownTimer(
+                          timeDuration: focusTime,
+                        )),
+              );
+            },
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(

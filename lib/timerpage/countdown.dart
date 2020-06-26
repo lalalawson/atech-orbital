@@ -7,17 +7,21 @@ import 'package:purrductive/timerpage/timer_settings.dart';
 class CountDownTimer extends StatefulWidget {
   @override
   _CountDownTimerState createState() => _CountDownTimerState();
+
+  final int timeDuration;
+
+  CountDownTimer({this.timeDuration});
 }
 
 class _CountDownTimerState extends State<CountDownTimer>
     with TickerProviderStateMixin {
-  int focusTime = 25;
-  int restTime = 5;
+//  int focusTime = 25;
+//  int restTime = 5;
   AnimationController controller;
 
-  void getFocusTime(int time) {
-    focusTime = time;
-  }
+//  void getFocusTime(int time) {
+//    focusTime = time;
+//  }
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
@@ -29,13 +33,18 @@ class _CountDownTimerState extends State<CountDownTimer>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(minutes: focusTime),
+      duration: Duration(minutes: widget.timeDuration),
     );
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    //ThemeData themeData = Theme.of(context);
     return Scaffold(
       appBar: MyAppBar(),
       backgroundColor: silverwhite,
@@ -52,7 +61,7 @@ class _CountDownTimerState extends State<CountDownTimer>
                     child: Column(
                       children: <Widget>[
                         Text(
-                          "Count Down Timer",
+                          "Time to focus!",
                           style: TextStyle(
                               fontFamily: 'pixelsix',
                               fontSize: 20.0,
@@ -64,7 +73,7 @@ class _CountDownTimerState extends State<CountDownTimer>
                               return Text(
                                 controller.isAnimating
                                     ? timerString
-                                    : '$focusTime:00',
+                                    : '${widget.timeDuration}:00',
                                 style: TextStyle(
                                     fontFamily: 'PixelOperator',
                                     fontSize: 112.0,
@@ -73,23 +82,6 @@ class _CountDownTimerState extends State<CountDownTimer>
                             }),
                       ],
                     ),
-                  ),
-                  RaisedButton(
-                    //todo: design button better
-                    onPressed: () {
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (context) => TimerSettings(
-                                focusTime: focusTime,
-                                restTime: restTime,
-                                focusTimeCallback: (time) {
-                                  setState(() {
-                                    getFocusTime(time);
-                                  });
-                                },
-                              ));
-                    },
-                    child: Text('Settings'),
                   ),
                   //todo: to include studying gif and spinning hourglass
                   AnimatedBuilder(
