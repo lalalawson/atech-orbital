@@ -20,6 +20,7 @@ class _CountDownTimerState extends State<CountDownTimer>
     with TickerProviderStateMixin {
   AnimationController controller;
   bool hasStarted = false;
+  bool startWork = false;
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
@@ -32,7 +33,7 @@ class _CountDownTimerState extends State<CountDownTimer>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 4),
+      duration: Duration(seconds: 7),
     );
     controller.addStatusListener((status) {
       if (status == AnimationStatus.dismissed) {
@@ -55,7 +56,7 @@ class _CountDownTimerState extends State<CountDownTimer>
   }
 
   Widget startingText(String text) {
-    hasStarted = true;
+    //hasStarted = true;
     return Text(
       '$text:00',
       style: TextStyle(
@@ -73,36 +74,47 @@ class _CountDownTimerState extends State<CountDownTimer>
             return Padding(
               padding: EdgeInsets.all(8.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Center(
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          "Time to focus!",
-                          style: TextStyle(
-                              fontFamily: 'pixelsix',
-                              fontSize: 20.0,
-                              color: Colors.black),
-                        ),
-                        hasStarted
-                            ? AnimatedBuilder(
-                                animation: controller,
-                                builder: (BuildContext context, Widget child) {
-                                  return Text(
-                                    timerString,
-                                    style: TextStyle(
-                                        fontFamily: 'PixelOperator',
-                                        fontSize: 112.0,
-                                        color: Colors.black),
-                                  );
-                                })
-                            : startingText(widget.timeDuration.toString()),
-                      ],
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 30.0),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Time to focus!",
+                            style: TextStyle(
+                                fontFamily: 'pixelsix',
+                                fontSize: 20.0,
+                                color: Colors.black),
+                          ),
+                          hasStarted
+                              ? AnimatedBuilder(
+                                  animation: controller,
+                                  builder:
+                                      (BuildContext context, Widget child) {
+                                    return Text(
+                                      timerString,
+                                      style: TextStyle(
+                                          fontFamily: 'PixelOperator',
+                                          fontSize: 112.0,
+                                          color: Colors.black),
+                                    );
+                                  })
+                              : startingText(widget.timeDuration.toString()),
+                        ],
+                      ),
                     ),
                   ),
-                  //todo: to include studying gif and spinning hourglass
+                  Container(
+                    child: Image.asset(
+                      startWork
+                          ? 'images/cat_studying.gif'
+                          : 'images/cat_study.png',
+                      height: 200.0,
+                    ),
+                  ),
                   AnimatedBuilder(
                     animation: controller,
                     builder: (context, child) {
@@ -121,9 +133,12 @@ class _CountDownTimerState extends State<CountDownTimer>
                           ),
                           onPressed: () {
                             setState(() {
-                              if (controller.isAnimating)
+                              hasStarted = true;
+                              startWork = true;
+                              if (controller.isAnimating) {
                                 controller.stop();
-                              else {
+                                startWork = false;
+                              } else {
                                 controller.reverse(
                                     from: controller.value == 0.0
                                         ? 1.0
