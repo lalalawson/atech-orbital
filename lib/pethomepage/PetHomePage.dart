@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:purrductive/const/appbar.dart';
+import 'package:provider/provider.dart';
 import 'package:purrductive/const/colors.dart';
+
+import 'coin_data.dart';
 
 class PetHomePage extends StatefulWidget {
   @override
@@ -10,6 +12,8 @@ class PetHomePage extends StatefulWidget {
 class _PetHomePageState extends State<PetHomePage> {
   @override
   Widget build(BuildContext context) {
+    int numOfCoins = Provider.of<CoinData>(context).numOfCoins;
+
     return Scaffold(
       backgroundColor: silverwhite,
       appBar: AppBar(
@@ -19,14 +23,19 @@ class _PetHomePageState extends State<PetHomePage> {
           color: Colors.black,
         ),
         actions: [
-          Icon(
-            Icons.shopping_cart,
+          GestureDetector(
+            onTap: () {
+              Provider.of<CoinData>(context).addCoins(10);
+            },
+            child: Icon(
+              Icons.shopping_cart,
+            ),
           ),
           SizedBox(width: 15.0),
           Row(
             children: [
               Text(
-                '100',
+                '$numOfCoins',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'PixelOperator',

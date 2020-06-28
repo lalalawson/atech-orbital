@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:purrductive/const/appbar.dart';
+import 'package:provider/provider.dart';
 import 'package:purrductive/const/colors.dart';
-import 'package:purrductive/timerpage/CustomTimerPainter.dart';
+import 'package:purrductive/pethomepage/coin_data.dart';
 import 'package:purrductive/timerpage/timer_end_dialog.dart';
-import 'package:purrductive/timerpage/timer_settings.dart';
 
 class CountDownTimer extends StatefulWidget {
   @override
@@ -37,6 +36,7 @@ class _CountDownTimerState extends State<CountDownTimer>
     );
     controller.addStatusListener((status) {
       if (status == AnimationStatus.dismissed) {
+        coinsEarned();
         showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -53,6 +53,11 @@ class _CountDownTimerState extends State<CountDownTimer>
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  void coinsEarned() {
+    int coins = (widget.timeDuration) * 2;
+    Provider.of<CoinData>(context).addCoins(coins);
   }
 
   Widget startingText(String text) {
