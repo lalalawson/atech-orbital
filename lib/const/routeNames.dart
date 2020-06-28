@@ -9,3 +9,4 @@ const settingsPage = '/settings';
 const timerPage = '/timer';
 const countdown = '/countdown';
 const toDoListPage = '/toDo';
+const taskSettingPage = '/taskSettingPage';

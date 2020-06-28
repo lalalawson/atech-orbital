@@ -8,6 +8,7 @@ import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/const/appbar.dart';
 import 'package:purrductive/todolistpage/widgets/EmptyListMessage.dart';
 import 'package:purrductive/todolistpage/widgets/Progress_Bar.dart';
+import 'package:purrductive/todolistpage/screens/task_settings_page.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -28,6 +29,17 @@ class TasksScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        actions: <Widget>[
+          InkWell(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: Icon(Icons.more_vert),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, taskSettingPage);
+            },
+          ),
+        ],
       ), //MyAppBar(),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -161,12 +173,7 @@ class TasksScreen extends StatelessWidget {
                           context: context,
                           isScrollControlled: true,
                           builder: (context) => SingleChildScrollView(
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      MediaQuery.of(context).viewInsets.bottom),
-                              child: AddTaskScreen(),
-                            ),
+                            child: AddTaskScreen(),
                           ),
                         );
                       },

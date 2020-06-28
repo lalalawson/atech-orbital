@@ -31,7 +31,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
                 'New Task',
@@ -92,36 +92,38 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   newRemarks = newText;
                 },
               ),
-              ExpansionTile(
-                leading: Icon(
-                  Icons.calendar_today,
-                  size: 25,
-                ),
-                title: Text(
-                  "Pick a date",
-                  //textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'PixelOperator',
-                    color: greenblue,
-                    fontSize: 25,
+              Expanded(
+                child: ExpansionTile(
+                  leading: Icon(
+                    Icons.calendar_today,
+                    size: 25,
                   ),
-                ),
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.12,
-                    child: CupertinoDatePicker(
-                      initialDateTime: DateTime.now(),
-                      onDateTimeChanged: (DateTime newDate) {
-                        isChanged = true;
-                        dateTime = newDate;
-                      },
-                      mode: CupertinoDatePickerMode.date,
-                      maximumDate: new DateTime(2099, 12, 30),
-                      minimumYear: 2020,
-                      maximumYear: 2099,
+                  title: Text(
+                    "Pick a date",
+                    //textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'PixelOperator',
+                      color: greenblue,
+                      fontSize: 25,
                     ),
-                  )
-                ],
+                  ),
+                  children: <Widget>[
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (DateTime newDate) {
+                          isChanged = true;
+                          dateTime = newDate;
+                        },
+                        mode: CupertinoDatePickerMode.date,
+                        maximumDate: new DateTime(2099, 12, 30),
+                        minimumYear: 2020,
+                        maximumYear: 2099,
+                      ),
+                    )
+                  ],
+                ),
               ),
               FlatButton(
                 shape: RoundedRectangleBorder(

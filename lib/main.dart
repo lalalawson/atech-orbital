@@ -13,6 +13,7 @@ import 'package:purrductive/todolistpage/screens/tasks_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:purrductive/todolistpage/task/TaskData.dart';
 import 'package:purrductive/login_page/login_page.dart';
+import 'package:purrductive/todolistpage/screens/task_settings_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
           timerPage: (BuildContext context) => TimerPage(),
           countdown: (BuildContext context) => CountDownTimer(),
           toDoListPage: (BuildContext context) => TasksScreen(),
+          taskSettingPage: (BuildContext context) => TaskSettingsPage(),
         },
       ),
     );
