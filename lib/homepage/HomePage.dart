@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                       });
                     }
                   },
-                  child: Image.asset('images/lion.gif'),
+                  child: Image.asset('images/cat.gif'),
                 ),
               ),
             ],
