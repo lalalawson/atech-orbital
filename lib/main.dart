@@ -6,6 +6,7 @@ import 'package:purrductive/homepage/HomePage.dart';
 import 'package:purrductive/login_page/credentials_page.dart';
 import 'package:purrductive/login_page/registration_page.dart';
 import 'package:purrductive/pethomepage/PetHomePage.dart';
+import 'package:purrductive/pethomepage/coin_data.dart';
 import 'package:purrductive/settingspage/Settings.dart';
 import 'package:purrductive/timerpage/TimerPage.dart';
 import 'package:purrductive/timerpage/countdown.dart';
@@ -27,8 +28,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      builder: (context) => TaskData(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => TaskData(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CoinData(),
+        )
+      ],
       child: MaterialApp(
         title: 'purrductive',
         home: LoginPage(),
