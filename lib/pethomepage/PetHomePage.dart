@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:purrductive/const/appbar.dart';
 import 'package:purrductive/const/colors.dart';
 
 class PetHomePage extends StatefulWidget {
@@ -11,36 +12,44 @@ class _PetHomePageState extends State<PetHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: silverwhite,
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 300),
-            Container(
-              color: Colors.cyan,
-              child: Text(
-                "THIS IS WHERE THE PET'S HOME PAGE WILL BE",
-                style: TextStyle(fontFamily: 'PressStart2P', fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 200),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.home,
-                    size: 100,
-                    color: Colors.blueAccent,
-                  ),
-                ),
-              ],
-            )
-          ],
+      appBar: AppBar(
+        backgroundColor: silverwhite,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black,
         ),
+        actions: [
+          Icon(
+            Icons.shopping_cart,
+          ),
+          SizedBox(width: 15.0),
+          Row(
+            children: [
+              Text(
+                '100',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'PixelOperator',
+                  fontSize: 25.0,
+                ),
+              ),
+              Icon(
+                Icons.monetization_on,
+              ),
+            ],
+          ),
+          SizedBox(width: 15.0),
+        ],
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Container(
+              child: Image.asset('images/cat.gif'),
+            ),
+          ),
+        ],
       ),
     );
   }
