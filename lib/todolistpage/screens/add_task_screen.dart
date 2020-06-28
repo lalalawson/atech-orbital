@@ -18,7 +18,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     bool isChanged = false;
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
+      height: MediaQuery.of(context).size.height * 0.7,
       color: Color(0xff757575),
       child: Container(
           padding: EdgeInsets.all(30),
@@ -92,11 +92,86 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   newRemarks = newText;
                 },
               ),
+              ExpansionTile(
+                leading: Icon(
+                  Icons.label_outline,
+                  size: 25,
+                ),
+                title: Text(
+                  "Label",
+                  //textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'PixelOperator',
+                    color: greenblue,
+                    fontSize: 25,
+                  ),
+                ),
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 8.0, right: 8, top: 8, bottom: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.yellow,
+                          child: Icon(
+                            Icons.camera,
+                            color: Colors.white,
+                          ),
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.red,
+                          child: Icon(
+                            Icons.message,
+                            color: Colors.white,
+                          ),
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.green,
+                          child: Icon(
+                            Icons.work,
+                            color: Colors.white,
+                          ),
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.blue,
+                          child: Icon(
+                            Icons.error_outline,
+                            color: Colors.white,
+                          ),
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.black,
+                          child: Icon(
+                            Icons.library_music,
+                            color: Colors.white,
+                          ),
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.amber,
+                          child: Icon(
+                            Icons.rss_feed,
+                            color: Colors.white,
+                          ),
+                        ),
+                        CircleAvatar(
+                          backgroundColor: Colors.cyan,
+                          child: Icon(
+                            Icons.create,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
               Expanded(
                 child: ExpansionTile(
                   leading: Icon(
                     Icons.calendar_today,
-                    size: 25,
+                    size: 23,
                   ),
                   title: Text(
                     "Pick a date",
@@ -109,7 +184,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   ),
                   children: <Widget>[
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.15,
+                      height: MediaQuery.of(context).size.height * 0.16,
                       child: CupertinoDatePicker(
                         initialDateTime: DateTime.now(),
                         onDateTimeChanged: (DateTime newDate) {

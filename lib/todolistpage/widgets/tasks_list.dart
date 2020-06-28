@@ -41,10 +41,12 @@ class _TasksListState extends State<TasksList> {
           },
           onDragFinish: (before, after) {
             Task data = TL[before];
-            TL.removeAt(before);
-            TL.insert(after, data);
+            if (TL.length > 1) {
+              TL.removeAt(before);
+              TL.insert(after, data);
+            }
           },
-          canBeDraggedTo: (one, two) => TL.length > 1 ? true : false,
+          canBeDraggedTo: (one, two) => TL.length <= 1 ? false : true,
           dragElevation: 0.1,
         );
       },
