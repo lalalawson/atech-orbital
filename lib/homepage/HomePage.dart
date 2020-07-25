@@ -126,7 +126,10 @@ class _HomePageState extends State<HomePage> {
                   child: Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
-                      Image.asset('images/board.png'),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Image.asset('images/board.png'),
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -134,9 +137,9 @@ class _HomePageState extends State<HomePage> {
                             'Welcome back\n\n$name',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 35,
+                              fontSize: 30,
                               fontFamily: 'pixelmix',
-                              letterSpacing: 3.5,
+                              letterSpacing: 3,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -146,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                               '${Provider.of<TaskData>(context).taskLeft} Tasks left to do',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 40,
+                                fontSize: 35,
                                 fontFamily: 'PixelOperator',
                                 letterSpacing: 2.5,
                               ),
@@ -156,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                             '${Provider.of<TaskData>(context).overdueTaskCount} Tasks overdue',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 40,
+                              fontSize: 35,
                               fontFamily: 'PixelOperator',
                               letterSpacing: 2.5,
                             ),

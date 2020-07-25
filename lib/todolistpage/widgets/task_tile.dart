@@ -11,6 +11,7 @@ class TaskTile extends StatefulWidget {
   final Function checkboxCallback;
   final Function longPressCallback;
   final bool isOverdueTask;
+  final Color labelColor;
 
   TaskTile(
       {this.key,
@@ -20,6 +21,7 @@ class TaskTile extends StatefulWidget {
       this.dateTime,
       this.isOverdueTask = false,
       this.date,
+      this.labelColor,
       this.checkboxCallback,
       this.longPressCallback});
 
@@ -80,18 +82,33 @@ class _TaskTileState extends State<TaskTile> {
             decoration: widget.isChecked ? TextDecoration.lineThrough : null,
           ),
         ),
-        subtitle: widget.remarks.isEmpty
+        subtitle: widget.labelColor == null
             ? null
-            : Text(
-                widget.remarks,
-                style: TextStyle(
-                  fontFamily: 'pixelmix',
-                  fontSize: 14,
-                  color: Colors.grey[800],
-                  decoration:
-                      widget.isChecked ? TextDecoration.lineThrough : null,
-                ),
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    height: 7,
+                    width: 69,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: widget.labelColor,
+                    ),
+                  ),
+                ],
               ),
+//        widget.remarks.isEmpty
+//            ? null
+//            : Text(
+//                widget.remarks,
+//                style: TextStyle(
+//                  fontFamily: 'pixelmix',
+//                  fontSize: 14,
+//                  color: Colors.grey[800],
+//                  decoration:
+//                      widget.isChecked ? TextDecoration.lineThrough : null,
+//                ),
+//              ),
         leading: Checkbox(
           value: widget.isChecked,
           activeColor: greenblue,

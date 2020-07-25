@@ -60,17 +60,29 @@ class TaskData extends ChangeNotifier {
     return this.taskDone / this.taskCount;
   }
 
-  void addTask(String newTaskTitle, String newRemarks, DateTime dateTime) {
+  void addTask(String newTaskTitle, Color colorSelected, DateTime dateTime) {
     String date = dateTime.day.toString() + " " + monthsInYear[dateTime.month];
     final task = Task(
       name: newTaskTitle,
-      remarks: newRemarks,
+      color: colorSelected,
       dateTime: dateTime,
       date: date,
       isOverDueTask: false,
     );
     _tasks.add(task);
+    notifyListeners();
+  }
 
+  void addTaskWithoutColor(String newTaskTitle, DateTime dateTime) {
+    String date = dateTime.day.toString() + " " + monthsInYear[dateTime.month];
+    final task = Task(
+      name: newTaskTitle,
+      color: null,
+      dateTime: dateTime,
+      date: date,
+      isOverDueTask: false,
+    );
+    _tasks.add(task);
     notifyListeners();
   }
 

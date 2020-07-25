@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
+
 class Task {
   final String name;
-  final String remarks;
   final DateTime dateTime;
   final String date;
+  final Color color;
   bool isDone;
   bool isOverDueTask;
 
   Task({
     this.name,
-    this.remarks,
+    this.color,
     this.dateTime,
     this.date,
     this.isDone = false,

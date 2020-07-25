@@ -25,7 +25,7 @@ class _TasksListState extends State<TasksList> {
               child: TaskTile(
                 key: UniqueKey(),
                 taskTitle: task.name,
-                remarks: task.remarks.isEmpty ? '' : '- ' + task.remarks,
+                labelColor: task.color,
                 dateTime: task.dateTime,
                 date: task.date,
                 isChecked: task.isDone,

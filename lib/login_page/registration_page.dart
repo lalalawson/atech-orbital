@@ -6,6 +6,7 @@ import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/const/components.dart';
 import 'package:purrductive/const/routeNames.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class RegistrationPage extends StatefulWidget {
   @override
@@ -63,9 +64,12 @@ class _RegistrationPageState extends State<RegistrationPage>
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: Text(
-                  'register',
-                  style: TextStyle(
+                child: TyperAnimatedTextKit(
+                  speed: Duration(milliseconds: 200),
+                  pause: Duration(milliseconds: 1800),
+                  isRepeatingAnimation: false,
+                  text: ['register'],
+                  textStyle: TextStyle(
                     fontFamily: 'pixelsix',
                     fontSize: 50.0,
                   ),

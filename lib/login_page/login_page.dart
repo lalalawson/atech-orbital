@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               child: TyperAnimatedTextKit(
                 speed: Duration(milliseconds: 200),
                 pause: Duration(milliseconds: 1800),
-                isRepeatingAnimation: false,
+                isRepeatingAnimation: true,
                 text: ['purrductive'],
                 textStyle: TextStyle(
                   fontFamily: 'pixelsix',
