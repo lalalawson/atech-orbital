@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:purrductive/const/colors.dart';
+import 'package:purrductive/pethomepage/inventory.dart';
+import 'package:purrductive/pethomepage/shop.dart';
 
 import 'coin_data.dart';
 
@@ -25,7 +27,20 @@ class _PetHomePageState extends State<PetHomePage> {
         actions: [
           GestureDetector(
             onTap: () {
-              Provider.of<CoinData>(context).addCoins(10);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Inventory()));
+            },
+            child: Icon(
+              Icons.work,
+            ),
+          ),
+          SizedBox(
+            width: 10.0,
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Shop()));
             },
             child: Icon(
               Icons.shopping_cart,

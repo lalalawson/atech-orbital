@@ -12,4 +12,9 @@ class CoinData extends ChangeNotifier {
     _coins += num;
     notifyListeners();
   }
+
+  void removeCoins(int num) {
+    _coins -= num;
+    notifyListeners();
+  }
 }
