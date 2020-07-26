@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:purrductive/const/routeNames.dart';
 import 'package:purrductive/const/colors.dart';
+import 'package:purrductive/pethomepage/coin_data.dart';
 import 'package:purrductive/todolistpage/widgets/tasks_list.dart';
 import 'package:provider/provider.dart';
 import 'package:purrductive/todolistpage/task/TaskData.dart';
@@ -80,6 +81,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget homePage(context) {
+    String currentPet = Provider.of<CoinData>(context).currentPet;
     String name = widget.username;
     return AnimatedPositioned(
       top: isCollapsed ? 0 : 0 * screenHeight,
@@ -181,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                       });
                     }
                   },
-                  child: Image.asset('images/cat.gif'),
+                  child: Image.asset('images/$currentPet.gif'),
                 ),
               ),
             ],

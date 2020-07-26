@@ -22,6 +22,7 @@ class _CredentialsPageState extends State<CredentialsPage>
   String password;
   String userName;
   bool showSpinner = false;
+  bool _error = false;
 
   final textController = TextEditingController();
   final textController2 = TextEditingController();
@@ -125,6 +126,16 @@ class _CredentialsPageState extends State<CredentialsPage>
               ),
               SizedBox(
                 height: 30.0,
+                child: _error
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Incorrect email/password!',
+                          style:
+                              TextStyle(color: darkRed, fontFamily: 'pixelmix'),
+                        ),
+                      )
+                    : null,
               ),
               Hero(
                 tag: 'log in',
@@ -171,6 +182,10 @@ class _CredentialsPageState extends State<CredentialsPage>
                         }
                       } catch (e) {
                         print(e);
+                        setState(() {
+                          showSpinner = false;
+                          _error = true;
+                        });
                       }
                     },
                     child: Padding(
