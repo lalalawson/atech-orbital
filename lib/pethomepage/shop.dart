@@ -108,23 +108,110 @@ class ShopContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int numOfCoins = Provider.of<CoinData>(context).numOfCoins;
+    List<String> currentPets = Provider.of<CoinData>(context).allPets;
+    bool contains = currentPets.contains(pet);
+
     return Column(
       children: [
         GestureDetector(
           onTap: () {
-            if (numOfCoins - amount < 0) {
+            if (!contains) {
+              if (numOfCoins - amount < 0) {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Insufficient funds!'),
+                        titleTextStyle: TextStyle(
+                          fontFamily: 'pixelsix',
+                          color: Colors.black,
+                          fontSize: 24.0,
+                        ),
+                        content: Text(
+                            'You do not have enough money to purchase this.'),
+                        contentTextStyle: TextStyle(
+                          fontFamily: 'PixelOperator',
+                          color: Colors.black,
+                          fontSize: 22.0,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        actions: [
+                          FlatButton(
+                            textColor: darkCyan,
+                            child: Text(
+                              'Ok!',
+                              style: TextStyle(fontFamily: 'pixelmix'),
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Buy this pet?'),
+                        titleTextStyle: TextStyle(
+                          fontFamily: 'pixelsix',
+                          color: Colors.black,
+                          fontSize: 24.0,
+                        ),
+                        content: Text('$amount will be deducted!'),
+                        contentTextStyle: TextStyle(
+                          fontFamily: 'PixelOperator',
+                          color: Colors.black,
+                          fontSize: 22.0,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        actions: [
+                          FlatButton(
+                            textColor: darkCyan,
+                            child: Text(
+                              'Yes!',
+                              style: TextStyle(fontFamily: 'pixelmix'),
+                            ),
+                            onPressed: () {
+                              Provider.of<CoinData>(context)
+                                  .removeCoins(amount);
+                              Provider.of<CoinData>(context).addPet(pet);
+                              Navigator.pop(context);
+                            },
+                          ),
+                          FlatButton(
+                            textColor: darkYellow,
+                            child: Text(
+                              'No!',
+                              style: TextStyle(fontFamily: 'pixelmix'),
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    });
+              }
+            } else {
               showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Insufficient funds!'),
+                      title: Text('Hey'),
                       titleTextStyle: TextStyle(
                         fontFamily: 'pixelsix',
                         color: Colors.black,
                         fontSize: 24.0,
                       ),
                       content: Text(
-                          'You do not have enough money to purchase this.'),
+                          'You already own this pet!\nCheck your inventory!'),
                       contentTextStyle: TextStyle(
                         fontFamily: 'PixelOperator',
                         color: Colors.black,
@@ -134,56 +221,10 @@ class ShopContainer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       actions: [
-                        FlatButton(
-                          textColor: darkCyan,
-                          child: Text(
-                            'Ok!',
-                            style: TextStyle(fontFamily: 'pixelmix'),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    );
-                  });
-            } else {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Buy this pet?'),
-                      titleTextStyle: TextStyle(
-                        fontFamily: 'pixelsix',
-                        color: Colors.black,
-                        fontSize: 24.0,
-                      ),
-                      content: Text('$amount will be deducted!'),
-                      contentTextStyle: TextStyle(
-                        fontFamily: 'PixelOperator',
-                        color: Colors.black,
-                        fontSize: 22.0,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      actions: [
-                        FlatButton(
-                          textColor: darkCyan,
-                          child: Text(
-                            'Yes!',
-                            style: TextStyle(fontFamily: 'pixelmix'),
-                          ),
-                          onPressed: () {
-                            Provider.of<CoinData>(context).removeCoins(amount);
-                            Provider.of<CoinData>(context).addPet(pet);
-                            Navigator.pop(context);
-                          },
-                        ),
                         FlatButton(
                           textColor: darkYellow,
                           child: Text(
-                            'No!',
+                            'Ok',
                             style: TextStyle(fontFamily: 'pixelmix'),
                           ),
                           onPressed: () {
@@ -199,9 +240,10 @@ class ShopContainer extends StatelessWidget {
             height: 100,
             width: 100,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 5.0),
+              border: Border.all(
+                  color: contains ? greenblue : Colors.grey, width: 5.0),
               borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
+              color: contains ? offWhite : Colors.white,
             ),
             child: Image.asset('images/$pet icon.png'),
           ),

@@ -88,6 +88,8 @@ class InventoryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String currentPet = Provider.of<CoinData>(context).currentPet;
+    bool current = (currentPet == pet);
     return Column(
       children: [
         GestureDetector(
@@ -141,9 +143,10 @@ class InventoryContainer extends StatelessWidget {
             height: 100,
             width: 100,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 5.0),
+              border: Border.all(
+                  color: current ? greenblue : Colors.grey, width: 5.0),
               borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
+              color: current ? offWhite : Colors.white,
             ),
             child: Image.asset('images/$pet icon.png'),
           ),
