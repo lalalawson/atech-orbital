@@ -14,6 +14,7 @@ class PetHomePage extends StatefulWidget {
 class _PetHomePageState extends State<PetHomePage> {
   @override
   Widget build(BuildContext context) {
+    String currentPet = Provider.of<CoinData>(context).currentPet;
     int numOfCoins = Provider.of<CoinData>(context).numOfCoins;
 
     return Scaffold(
@@ -70,7 +71,7 @@ class _PetHomePageState extends State<PetHomePage> {
         children: [
           Center(
             child: Container(
-              child: Image.asset('images/cat.gif'),
+              child: Image.asset('images/$currentPet.gif'),
             ),
           ),
         ],

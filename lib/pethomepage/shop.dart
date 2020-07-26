@@ -64,15 +64,31 @@ class Shop extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ShopContainer(
-                pet: 'cat',
+                pet: 'panda',
                 amount: 500,
               ),
               ShopContainer(
-                pet: 'cat',
+                pet: 'lion',
                 amount: 500,
               ),
               ShopContainer(
-                pet: 'cat',
+                pet: 'fox',
+                amount: 500,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ShopContainer(
+                pet: 'octopus',
+                amount: 500,
+              ),
+              ShopContainer(
+                pet: 'koala',
                 amount: 500,
               ),
             ],
@@ -160,6 +176,7 @@ class ShopContainer extends StatelessWidget {
                           ),
                           onPressed: () {
                             Provider.of<CoinData>(context).removeCoins(amount);
+                            Provider.of<CoinData>(context).addPet(pet);
                             Navigator.pop(context);
                           },
                         ),
