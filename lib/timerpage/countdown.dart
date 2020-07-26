@@ -5,6 +5,8 @@ import 'package:purrductive/const/colors.dart';
 import 'package:purrductive/pethomepage/coin_data.dart';
 import 'package:purrductive/timerpage/timer_end_dialog.dart';
 
+import 'LifecycleEventHandler.dart';
+
 class CountDownTimer extends StatefulWidget {
   @override
   _CountDownTimerState createState() => _CountDownTimerState();
@@ -32,7 +34,7 @@ class _CountDownTimerState extends State<CountDownTimer>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 7),
+      duration: Duration(seconds: 20),
     );
     controller.addStatusListener((status) {
       if (status == AnimationStatus.dismissed) {
@@ -47,6 +49,45 @@ class _CountDownTimerState extends State<CountDownTimer>
             });
       }
     });
+    WidgetsBinding.instance.addObserver(LifecycleEventHandler(
+        resumeCallBack: () async => setState(() {
+              controller.stop();
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('You lost focus!'),
+                      titleTextStyle: TextStyle(
+                        fontFamily: 'pixelsix',
+                        color: Colors.black,
+                        fontSize: 24.0,
+                      ),
+                      content: Text(
+                          'You exited the app during the timer...\nYour rewards will be forfeited!'),
+                      contentTextStyle: TextStyle(
+                        fontFamily: 'PixelOperator',
+                        color: Colors.black,
+                        fontSize: 22.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      actions: [
+                        FlatButton(
+                          textColor: darkCyan,
+                          child: Text(
+                            'Try harder!',
+                            style: TextStyle(fontFamily: 'pixelmix'),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    );
+                  });
+            })));
   }
 
   @override
