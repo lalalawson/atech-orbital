@@ -69,11 +69,28 @@ class _PetHomePageState extends State<PetHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Container(
-              child: Image.asset('images/$currentPet.gif'),
-            ),
+          Stack(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 180,
+                  ),
+                  Expanded(
+                    child: Image.asset('images/bookshelf.png'),
+                  )
+                ],
+              ),
+              Container(
+                child: Image.asset('images/$currentPet.gif'),
+              )
+            ],
           ),
+          Container(
+            height: 150,
+            width: 200,
+            child: Image.asset('images/yarn.png'),
+          )
         ],
       ),
     );
