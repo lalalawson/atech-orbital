@@ -51,7 +51,7 @@ Then, we will introduce users to our pomodoro timer, which helps the users split
 
 Current proposed timer page:
 
-<img src="/images/ss4.png" alt="pethome" width="200"/>
+<img src="https://imgur.com/a/nZYfHao" alt="timer" width="200"/>
 
 
 
@@ -64,10 +64,6 @@ Current proposed homepage:
 Everytime users clear a pomodoro, or their very own custom focus session, or when they clear a task at hand, they get awarded with in-game currency. With that currency, they get to unlock different avatars of their liking, purchase accessories for their avatars, or even decorate the avatar's home! 
 
 Additionally, we have implemented focus function whereby the user's focus session would be prematurely terminated if the app is exited or the user decides to use his/her phone.
-
-Current proposed pethome:
-
-<img src="/images/ss2.png" alt="pethome" width="200"/> 
 
 
 
