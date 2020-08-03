@@ -44,9 +44,7 @@ Firstly, we intend to have a simple to-do list, allowing users to organize their
 
 Current implemented to do list:
 
-<img src="https://i.imgur.com/vMFVrnD.png" alt="pethome" width="200"/>
-<img src="https://imgur.com/DPFXGbh.png" alt="pethome" width="200"/>
-<img src="https://imgur.com/tVYxOBi.png" alt="pethome" width="200"/>
+<img src="https://i.imgur.com/vMFVrnD.png" alt="pethome" width="200"/> <img src="https://imgur.com/DPFXGbh.png" alt="pethome" width="200"/> <img src="https://imgur.com/tVYxOBi.png" alt="pethome" width="200"/>
 
 
 Then, we will introduce users to our pomodoro timer, which helps the users split their workload into short 25mins focus sprints, followed by a 5-10mins break in between. This cycle is also known as 1 pomodoro, and after 4 pomodoros, users will be prompted for a 15-30mins break. (Users will also have the flexibility to edit their preferred timings if required). The illusion of a 'deadline' tend to encourages users to focus on the task and hand, and also helps to break large amount of work into more digestable bite sizes. 
@@ -61,8 +59,7 @@ Next, we intend to incentivize our users for focusing and clearing off tasks thr
 
 Current proposed homepage:
 
-<img src="https://i.imgur.com/UHicodJ.png" alt="pethome" width="200"/>
-<img src="https://i.imgur.com/qwIUvhx.png" alt="pethome" width="200"/>
+<img src="https://i.imgur.com/UHicodJ.png" alt="pethome" width="200"/> <img src="https://i.imgur.com/qwIUvhx.png" alt="pethome" width="200"/>
 
 Everytime users clear a pomodoro, or their very own custom focus session, or when they clear a task at hand, they get awarded with in-game currency. With that currency, they get to unlock different avatars of their liking, purchase accessories for their avatars, or even decorate the avatar's home! 
 
