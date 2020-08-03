@@ -51,7 +51,7 @@ Then, we will introduce users to our pomodoro timer, which helps the users split
 
 Current proposed timer page:
 
-<img src="https://imgur.com/a/nZYfHao" alt="timer" width="200"/>
+<img src="https://imgur.com/a/zAcfJzK" alt="timer" width="200"/>
 
 
 
