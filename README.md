@@ -63,11 +63,11 @@ Current proposed homepage:
 
 Everytime users clear a pomodoro, or their very own custom focus session, or when they clear a task at hand, they get awarded with in-game currency. With that currency, they get to unlock different avatars of their liking, purchase accessories for their avatars, or even decorate the avatar's home! 
 
+Additionally, we have implemented focus function whereby the user's focus session would be prematurely terminated if the app is exited or the user decides to use his/her phone.
+
 Current proposed pethome:
 
-<img src="/images/ss2.png" alt="pethome" width="200"/>
-
-We are also looking into expand into multiplayer functions, where we will be able to create group focus sessions with our friends or colleagues, such that everyone can view each other's avatars, and also encourage our peers to study together! It is also worth to mention that if users leave the timer screen (i.e. to browse other apps), the timer would not continue! Thus, the users will not be able to collect their rewards. This serves to boost user's self discipline by providing them with a reason to not get distracted by other applications. 
+<img src="/images/ss2.png" alt="pethome" width="200"/> 
 
 
 
