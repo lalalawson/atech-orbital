@@ -82,17 +82,16 @@ We are also looking into expand into multiplayer functions, where we will be abl
 
 2. Milestone 2 (29 June 2020):
 
-- [ ] User log-in & authentication with Firebase is completed
-- [ ] Pomodoro Timer function implemented
-- [ ] Improve To-Do list features implemented (group them into categories etc)
-- [ ] Start designing pet's home page & allow for edits to decorations
+- [x] User log-in & authentication with Firebase is completed
+- [x] Pomodoro Timer function implemented
+- [x] Improve To-Do list features implemented (group them into categories etc)
 
 
 3. Milestone 3 (27 July 2020):
 
-- [ ] Allow users to earn in-game currency 
-- [ ] Create inventory / shop for users to spend in-game currency
-- [ ] Implement multiplayer studying 
+- [x] Allow users to earn in-game currency 
+- [x] Create inventory / shop for users to spend in-game currency
+
 
 ## Uniqueness (How are we different from similar platforms?)
 
