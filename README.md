@@ -43,9 +43,8 @@ Here are some of the functionalities we are intending to incoporate:
 Firstly, we intend to have a simple to-do list, allowing users to organize their tasks efficiently and have a quick overview. This allows users to zoom in quickly on priority targets. 
 
 Current implemented to do list:
-<a href="https://imgur.com/9u0aXOJ"><img src="https://i.imgur.com/9u0aXOJ.jpg" title="source: imgur.com" /></a>
-<img src="https://i.imgur.com/vMFVrnD.png" alt="pethome" width="200"/> <img src="https://imgur.com/DPFXGbh.png" alt="pethome" width="200"/> <img src="https://imgur.com/tVYxOBi.png" alt="pethome" width="200"/>
-
+<img src="https://i.imgur.com/9u0aXOJ.jpg" title="source: imgur.com" width="200" />
+<img src="https://i.imgur.com/lSR9WaN.jpg" title="source: imgur.com" width="200" />
 
 Then, we will introduce users to our pomodoro timer, which helps the users split their workload into short 25mins focus sprints, followed by a 5-10mins break in between. This cycle is also known as 1 pomodoro, and after 4 pomodoros, users will be prompted for a 15-30mins break. (Users will also have the flexibility to edit their preferred timings if required). The illusion of a 'deadline' tend to encourages users to focus on the task and hand, and also helps to break large amount of work into more digestable bite sizes. 
 
