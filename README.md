@@ -43,7 +43,7 @@ Here are some of the functionalities we are intending to incoporate:
 Firstly, we intend to have a simple to-do list, allowing users to organize their tasks efficiently and have a quick overview. This allows users to zoom in quickly on priority targets. 
 
 Current implemented to do list:
-
+<a href="https://imgur.com/9u0aXOJ"><img src="https://i.imgur.com/9u0aXOJ.jpg" title="source: imgur.com" /></a>
 <img src="https://i.imgur.com/vMFVrnD.png" alt="pethome" width="200"/> <img src="https://imgur.com/DPFXGbh.png" alt="pethome" width="200"/> <img src="https://imgur.com/tVYxOBi.png" alt="pethome" width="200"/>
 
 
