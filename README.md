@@ -49,10 +49,7 @@ Current implemented to do list:
 Then, we will introduce users to our pomodoro timer, which helps the users split their workload into short 25mins focus sprints, followed by a 5-10mins break in between. This cycle is also known as 1 pomodoro, and after 4 pomodoros, users will be prompted for a 15-30mins break. (Users will also have the flexibility to edit their preferred timings if required). The illusion of a 'deadline' tend to encourages users to focus on the task and hand, and also helps to break large amount of work into more digestable bite sizes. 
 
 Current proposed timer page:
-
-<img src="https://imgur.com/a/zAcfJzK" alt="timer" width="200"/>
-
-
+<img src="https://i.imgur.com/zUnZPf1.jpg" title="source: imgur.com" width="200" />
 
 Next, we intend to incentivize our users for focusing and clearing off tasks through gamification of our app. As you probably would have noticed, there is a cute animal on the screenshots of our app. The animal is actually your companion! We are intending to incorporate plenty of cute pixelated sprites into our app to serve as your companion! Afterall, it can be more encouraging to focus with someone at time! You are greeted by your companion everytime you login, and they remind you of your tasks at hand. 
 
