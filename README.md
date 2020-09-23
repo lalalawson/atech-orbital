@@ -3,7 +3,8 @@
 Orbital 2020 Team A.Tech (Yongler & Lawson)
 
 ## App: purrductive
-<i> Proposed Level of Achievement: Apollo 11 </i>
+<i> Level of Achievement: Apollo 11 </i>
+Certification: https://credentials.nus.edu.sg/48208b98-5bf0-47eb-856c-137588701a0f
 
 
 
@@ -42,31 +43,38 @@ Here are some of the functionalities we are intending to incoporate:
 
 Firstly, we intend to have a simple to-do list, allowing users to organize their tasks efficiently and have a quick overview. This allows users to zoom in quickly on priority targets. 
 
-Current implemented to do list:
+Current to do list:
+<img src="https://i.imgur.com/EKT9aMt.jpg" title="source: imgur.com" width="200" />
 <img src="https://i.imgur.com/9u0aXOJ.jpg" title="source: imgur.com" width="200" />
 <img src="https://i.imgur.com/lSR9WaN.jpg" title="source: imgur.com" width="200" />
 
 Then, we will introduce users to our pomodoro timer, which helps the users split their workload into short 25mins focus sprints, followed by a 5-10mins break in between. This cycle is also known as 1 pomodoro, and after 4 pomodoros, users will be prompted for a 15-30mins break. (Users will also have the flexibility to edit their preferred timings if required). The illusion of a 'deadline' tend to encourages users to focus on the task and hand, and also helps to break large amount of work into more digestable bite sizes. 
 
-Current proposed timer page:
+Current timer pages:
+<img src="https://i.imgur.com/DvVJE93.jpg" title="source: imgur.com" width="200" />
 <img src="https://i.imgur.com/zUnZPf1.jpg" title="source: imgur.com" width="200" />
 
 Next, we intend to incentivize our users for focusing and clearing off tasks through gamification of our app. As you probably would have noticed, there is a cute animal on the screenshots of our app. The animal is actually your companion! We are intending to incorporate plenty of cute pixelated sprites into our app to serve as your companion! Afterall, it can be more encouraging to focus with someone at time! You are greeted by your companion everytime you login, and they remind you of your tasks at hand. 
 
-Current proposed homepage:
+Current homepage:
 
-<img src="https://i.imgur.com/UHicodJ.png" alt="pethome" width="200"/> <img src="https://i.imgur.com/qwIUvhx.png" alt="pethome" width="200"/>
+<img src="https://i.imgur.com/ZdDCghj.jpg" title="source: imgur.com" width="200" /> <img src="https://i.imgur.com/VICsaCG.jpg" title="source: imgur.com" width="200" />
 
-Everytime users clear a pomodoro, or their very own custom focus session, or when they clear a task at hand, they get awarded with in-game currency. With that currency, they get to unlock different avatars of their liking, purchase accessories for their avatars, or even decorate the avatar's home! 
+Everytime users clear a pomodoro, or their very own custom focus session, or when they clear a task at hand, they get awarded with in-game currency. With that currency, they get to unlock different avatars of their liking, purchase accessories for their avatars, or even decorate the avatar's home! <br>
+<a href="https://imgur.com/H7EjSQC"><img src="https://i.imgur.com/H7EjSQC.jpg" title="source: imgur.com" width="200" /></a>
+<a href="https://imgur.com/dZWi2qC"><img src="https://i.imgur.com/dZWi2qC.jpg" title="source: imgur.com" width="200" /></a>
+<a href="https://imgur.com/RVvR7H8"><img src="https://i.imgur.com/RVvR7H8.jpg" title="source: imgur.com" width="200" /></a>
+<a href="https://imgur.com/TSdMqZm"><img src="https://i.imgur.com/TSdMqZm.jpg" title="source: imgur.com" width="200" /></a>
 
-Additionally, we have implemented focus function whereby the user's focus session would be prematurely terminated if the app is exited or the user decides to use his/her phone.
+Additionally, we have implemented focus function whereby the user's focus session would be prematurely terminated if the app is exited or the user decides to use his/her phone. <br>
+<a href="https://imgur.com/OPvnOtw"><img src="https://i.imgur.com/OPvnOtw.jpg" title="source: imgur.com" width="200" /></a>
 
 
 
 ### Timeline of Features to be completed
 
 1. Milestone 1 (1 June 2020):
-
+Video: https://drive.google.com/file/d/1c38P3ra3BC8lYnXR0lBGtgIXVxvsgbrP/view?usp=sharing
 - [x] An initial design of the app done
 - [x] App skeleton done, with basic functionalities such as navigating to other pages / having a drawer
 - [x] A set of avatars drawn and animated 
@@ -74,14 +82,14 @@ Additionally, we have implemented focus function whereby the user's focus sessio
 - [x] Implement a to-do list features
 
 2. Milestone 2 (29 June 2020):
-
+Video: https://youtu.be/oeBMUmLs7pg
 - [x] User log-in & authentication with Firebase is completed
 - [x] Pomodoro Timer function implemented
 - [x] Improve To-Do list features implemented (group them into categories etc)
 
 
 3. Milestone 3 (27 July 2020):
-
+Video: https://youtu.be/uTriY4q_BS0
 - [x] Allow users to earn in-game currency 
 - [x] Create inventory / shop for users to spend in-game currency
 
