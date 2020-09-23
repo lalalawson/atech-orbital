@@ -3,7 +3,7 @@
 Orbital 2020 Team A.Tech (Yongler & Lawson)
 
 ## App: purrductive
-<i> Level of Achievement: Apollo 11 </i>
+<i> Level of Achievement: Apollo 11 </i> <br>
 Certification: https://credentials.nus.edu.sg/48208b98-5bf0-47eb-856c-137588701a0f
 
 
@@ -73,7 +73,7 @@ Additionally, we have implemented focus function whereby the user's focus sessio
 
 ### Timeline of Features to be completed
 
-1. Milestone 1 (1 June 2020):
+1. Milestone 1 (1 June 2020): <br>
 Video: https://drive.google.com/file/d/1c38P3ra3BC8lYnXR0lBGtgIXVxvsgbrP/view?usp=sharing
 - [x] An initial design of the app done
 - [x] App skeleton done, with basic functionalities such as navigating to other pages / having a drawer
@@ -81,14 +81,14 @@ Video: https://drive.google.com/file/d/1c38P3ra3BC8lYnXR0lBGtgIXVxvsgbrP/view?us
 - [x] Implement the avatar into the app
 - [x] Implement a to-do list features
 
-2. Milestone 2 (29 June 2020):
+2. Milestone 2 (29 June 2020): <br>
 Video: https://youtu.be/oeBMUmLs7pg
 - [x] User log-in & authentication with Firebase is completed
 - [x] Pomodoro Timer function implemented
 - [x] Improve To-Do list features implemented (group them into categories etc)
 
 
-3. Milestone 3 (27 July 2020):
+3. Milestone 3 (27 July 2020): <br>
 Video: https://youtu.be/uTriY4q_BS0
 - [x] Allow users to earn in-game currency 
 - [x] Create inventory / shop for users to spend in-game currency
