@@ -18,6 +18,8 @@ class _RegistrationPageState extends State<RegistrationPage>
   String email;
   String password;
   String username;
+  bool _weakPassword = false;
+  bool _badEmail = false;
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
   final _firestore = Firestore.instance;
@@ -77,7 +79,7 @@ class _RegistrationPageState extends State<RegistrationPage>
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 30.0,
               ),
               Container(
                 height: animation.value * 50,
@@ -97,7 +99,7 @@ class _RegistrationPageState extends State<RegistrationPage>
                 ),
               ),
               SizedBox(
-                height: 10.0,
+                height: 30.0,
               ),
               Container(
                 height: animation.value * 50,
@@ -115,6 +117,21 @@ class _RegistrationPageState extends State<RegistrationPage>
                     hintText: 'email',
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 30.0,
+                child: _weakPassword
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Use a valid email \'@email.com\'!",
+                          style: TextStyle(
+                              color: darkRed,
+                              fontFamily: 'pixelmix',
+                              fontSize: 10.0),
+                        ),
+                      )
+                    : null,
               ),
               SizedBox(
                 height: 10.0,
@@ -138,7 +155,19 @@ class _RegistrationPageState extends State<RegistrationPage>
                 ),
               ),
               SizedBox(
-                height: 40.0,
+                height: 30.0,
+                child: _weakPassword
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Password has to be at least 6 characters!',
+                          style: TextStyle(
+                              color: darkRed,
+                              fontFamily: 'pixelmix',
+                              fontSize: 10.0),
+                        ),
+                      )
+                    : null,
               ),
               Hero(
                 tag: 'register',
@@ -159,31 +188,42 @@ class _RegistrationPageState extends State<RegistrationPage>
                         showSpinner = true;
                       });
                       try {
-                        final newUser =
-                            await _auth.createUserWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
-
-                        String uid = newUser.user.uid;
-
-                        _firestore.collection('users').document(uid).setData({
-                          "email": email,
-                          "username": username,
-                          "password": password,
-                          "uid": uid,
-                          "currency": 0,
-                        });
-
-                        if (newUser != null) {
-                          Navigator.pushReplacementNamed(
-                              context, credentialsPage);
+                        if (password.length < 6) {
+                          print('weak');
                           setState(() {
                             showSpinner = false;
+                            _weakPassword = true;
                           });
+                        } else {
+                          final newUser =
+                              await _auth.createUserWithEmailAndPassword(
+                            email: email,
+                            password: password,
+                          );
+
+                          String uid = newUser.user.uid;
+
+                          _firestore.collection('users').document(uid).setData({
+                            "email": email,
+                            "username": username,
+                            "password": password,
+                            "uid": uid,
+                            "currency": 0,
+                          });
+
+                          if (newUser != null) {
+                            Navigator.pushReplacementNamed(
+                                context, credentialsPage);
+                            setState(() {
+                              showSpinner = false;
+                            });
+                          }
                         }
                       } catch (e) {
                         print(e);
+                        setState(() {
+                          _badEmail = true;
+                        });
                       }
                     },
                     child: Padding(
